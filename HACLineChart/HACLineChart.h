@@ -8,25 +8,22 @@
 
 #import <UIKit/UIKit.h>
 
-//@class HACLineChart;
-//
-//typedef void (^ChartViewBlock)(HACLineChart *chart);
+#define kPercentage @"percentage"
 
 @interface HACLineChart : UIView
-
 
 @property (nonatomic) BOOL demo;
 @property (nonatomic) BOOL vertical;
 @property (nonatomic) BOOL reverse;
 @property (nonatomic) BOOL showProgress;
-//@property (nonatomic) int numberItems;
+@property (nonatomic) BOOL showRealValue;
 @property (nonatomic) int sizeLabelProgress;
 @property (nonatomic) int maxValue;
-@property (assign, nonatomic) UIColor *progressTextColor;
-@property (strong, nonatomic) NSArray *datos;
-@property (assign, nonatomic) UIFont *progressTextFont;
-@property (nonatomic) BOOL showRealValue;
+@property (strong, nonatomic) UIColor *progressTextColor;
+@property (strong, nonatomic) UIFont *progressTextFont;
 
-//@property (nonatomic, copy) ChartViewBlock chartBlock;
+@property (strong, nonatomic) NSArray *datos;
+
+- (void)clearChart;
 
 @end

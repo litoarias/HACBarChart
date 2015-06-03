@@ -13,6 +13,8 @@
 
 @property (weak, nonatomic) IBOutlet HACLineChart *chart;
 @property (weak, nonatomic) IBOutlet HACLineChart *chart1;
+- (IBAction)tapClear:(id)sender;
+- (IBAction)tapSetData:(id)sender;
 
 @end
 

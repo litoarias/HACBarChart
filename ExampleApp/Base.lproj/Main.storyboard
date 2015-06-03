@@ -19,22 +19,45 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MS0-LJ-ly4" customClass="HACLineChart">
-                                <rect key="frame" x="15" y="20" width="571" height="260"/>
+                                <rect key="frame" x="15" y="20" width="570" height="260"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EP2-yM-PjB" customClass="HACLineChart">
-                                <rect key="frame" x="15" y="320" width="571" height="260"/>
+                                <rect key="frame" x="15" y="320" width="570" height="260"/>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5KG-fF-QLO">
+                                <rect key="frame" x="217" y="285" width="50" height="30"/>
+                                <state key="normal" title="CLEAR">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="tapClear:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="exG-L5-o6a"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rok-xX-PIW">
+                                <rect key="frame" x="314" y="285" width="69" height="30"/>
+                                <state key="normal" title="SET DATA">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="tapClear:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="O84-67-cNx"/>
+                                    <action selector="tapSetData:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="7vq-Hi-1BT"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="MS0-LJ-ly4" firstAttribute="leading" secondItem="EP2-yM-PjB" secondAttribute="leading" id="EjM-LV-zs6"/>
-                            <constraint firstItem="EP2-yM-PjB" firstAttribute="top" secondItem="MS0-LJ-ly4" secondAttribute="bottom" constant="40" id="MLN-6L-mYE"/>
-                            <constraint firstAttribute="bottom" secondItem="EP2-yM-PjB" secondAttribute="bottom" constant="20" symbolic="YES" id="Sxi-AO-rlx"/>
-                            <constraint firstItem="MS0-LJ-ly4" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="Urz-QB-fdC"/>
-                            <constraint firstItem="MS0-LJ-ly4" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" id="aTz-3h-YpX"/>
-                            <constraint firstItem="EP2-yM-PjB" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" constant="320" id="jRF-OL-kfk"/>
-                            <constraint firstItem="MS0-LJ-ly4" firstAttribute="trailing" secondItem="EP2-yM-PjB" secondAttribute="trailing" id="usl-q0-h7F"/>
-                            <constraint firstItem="MS0-LJ-ly4" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-1" id="y8E-J6-JhS"/>
+                            <constraint firstAttribute="bottom" secondItem="EP2-yM-PjB" secondAttribute="bottom" constant="20" symbolic="YES" id="116-1J-7wz"/>
+                            <constraint firstItem="EP2-yM-PjB" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="26q-Da-BlD"/>
+                            <constraint firstItem="rok-xX-PIW" firstAttribute="centerY" secondItem="kh9-bI-dsS" secondAttribute="centerY" id="D5H-Bh-ESw"/>
+                            <constraint firstItem="rok-xX-PIW" firstAttribute="leading" secondItem="5KG-fF-QLO" secondAttribute="trailing" constant="47" id="HWO-Gg-Lni"/>
+                            <constraint firstItem="5KG-fF-QLO" firstAttribute="top" secondItem="MS0-LJ-ly4" secondAttribute="bottom" constant="5" id="Hdd-I8-ICC"/>
+                            <constraint firstItem="MS0-LJ-ly4" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" id="J7m-Cz-OKA"/>
+                            <constraint firstItem="5KG-fF-QLO" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="217" id="XcS-gJ-XmB"/>
+                            <constraint firstItem="5KG-fF-QLO" firstAttribute="baseline" secondItem="rok-xX-PIW" secondAttribute="baseline" id="d2b-Hc-Qah"/>
+                            <constraint firstItem="MS0-LJ-ly4" firstAttribute="leading" secondItem="EP2-yM-PjB" secondAttribute="leading" id="fNQ-AS-au0"/>
+                            <constraint firstItem="MS0-LJ-ly4" firstAttribute="trailing" secondItem="EP2-yM-PjB" secondAttribute="trailing" id="mhM-Rx-nQc"/>
+                            <constraint firstItem="EP2-yM-PjB" firstAttribute="top" secondItem="5KG-fF-QLO" secondAttribute="bottom" constant="5" id="oP2-SC-kZ4"/>
+                            <constraint firstItem="MS0-LJ-ly4" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-1" id="wMx-VH-ZNI"/>
                         </constraints>
                     </view>
                     <connections>

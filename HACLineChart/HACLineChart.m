@@ -11,9 +11,9 @@
 @implementation HACLineChart
 
 
--(void)setDatos:(NSArray *)datos{
+-(void)setDatos:(NSArray *)datos
+{
     _datos = datos;
-    
     [self createChartStandardWithOrientationVertical:_vertical showProgress:_showProgress];
 }
 
@@ -26,9 +26,8 @@
     _showRealValue              = NO;   // Show value contains _data, or real percent value
     _sizeLabelProgress          = 40;   // Width of label progress text
     _maxValue                   = 1000; // max value for chart
-    
     _progressTextColor          = [UIColor whiteColor];
-    _progressTextFont           = [UIFont fontWithName:@"DINCondensed-Bold" size:11.0];
+    _progressTextFont           = [UIFont fontWithName:@"DINCondensed-Bold" size:12.0];
 }
 
 - (id)initWithFrame:(CGRect)frame
@@ -49,13 +48,12 @@
     return self;
 }
 
-- (void)drawRect:(CGRect)rect {
-//    [self createChartStandardWithOrientationVertical:_vertical showProgress:_showProgress];
+-(void)clearChart{
+    [self.layer.sublayers makeObjectsPerformSelector:@selector(removeFromSuperlayer)];
 }
 
 
 -(void)createChartStandardWithOrientationVertical:(BOOL)vertical showProgress:(BOOL)showProgress{
-    
     
     // Ancho de cada linea
     CGFloat widthLine = vertical ? CGRectGetWidth(self.bounds)/_datos.count : CGRectGetHeight(self.bounds)/_datos.count;
@@ -72,7 +70,6 @@
     // Progreso
     CGFloat progress;
     
-    
     for (int i = 1; i<=_datos.count; i++) {
         
         CGFloat value = 0.0;
@@ -82,10 +79,8 @@
             
             // Dynamic Progress
             showProgress ? progress -=_sizeLabelProgress : progress;
-            
         }else{
-            value = [[[_datos objectAtIndex:i-1] valueForKey:@"percent"]floatValue];
-            
+            value = [[[_datos objectAtIndex:i-1] valueForKey:kPercentage]floatValue];
             progress = (value * progress100) / _maxValue;
         }
         
@@ -95,7 +90,6 @@
         // EL pincel pinta desde la mitad de la X, por eso hay que ajustar el grosor de la pintada para que pinte desde la izquierda
         positionX = widthLine*(i-1);
         positionX += widthLine/2;
-        
         
         /////// LINE CHART
         // Dibujo de la linea
@@ -152,10 +146,11 @@
         
         UILabel *progressText           = [[UILabel alloc]initWithFrame:frameLabel];
         progressText.text               = text;
+        progressText.numberOfLines = 1;
+        progressText.font               = _progressTextFont;
         progressText.textAlignment      = NSTextAlignmentCenter;
         progressText.textColor          = _progressTextColor;
-        progressText.font               = _progressTextFont;
-        progressText.backgroundColor    = [UIColor clearColor];
+        
         
         showProgress ? [self addSubview:progressText] : showProgress;
         
@@ -193,11 +188,7 @@
         animationLabel.fillMode = kCAFillModeBoth;
         
         vertical ? [[progressText layer] addAnimation:animationLabel forKey:@"y"] : [[progressText layer] addAnimation:animationLabel forKey:@"x"];
-        
     }
-    
 }
-
-
 
 @end
