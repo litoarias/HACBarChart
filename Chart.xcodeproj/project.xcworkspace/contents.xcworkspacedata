@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:Chart.xcodeproj">
+      location = "self:/Users/hariasc/Documents/Projects/HACBarChart/Chart.xcodeproj">
    </FileRef>
 </Workspace>

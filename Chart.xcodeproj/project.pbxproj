@@ -8,15 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		E310CF4C1B1C5AF800784DAC /* ChartTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E310CF4B1B1C5AF800784DAC /* ChartTests.m */; };
-		E3E0ECE71B1DF3B9006F9724 /* HACLineChart.m in Sources */ = {isa = PBXBuildFile; fileRef = E3E0ECE61B1DF3B9006F9724 /* HACLineChart.m */; };
-		E3E0ECF01B1DF3C3006F9724 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E3E0ECE91B1DF3C3006F9724 /* AppDelegate.m */; };
-		E3E0ECF31B1DF3C3006F9724 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E3E0ECEC1B1DF3C3006F9724 /* Info.plist */; };
-		E3E0ECF51B1DF3C3006F9724 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E3E0ECEF1B1DF3C3006F9724 /* ViewController.m */; };
-		E3E0ECFA1B1DF3DB006F9724 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E3E0ECF61B1DF3DB006F9724 /* Main.storyboard */; };
-		E3E0ECFB1B1DF3DB006F9724 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = E3E0ECF81B1DF3DB006F9724 /* LaunchScreen.xib */; };
+		E312493F1B1F949D003691C4 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E312493E1B1F949D003691C4 /* ViewController.m */; };
+		E31249411B1F94DC003691C4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E31249401B1F94DC003691C4 /* main.m */; };
+		E31249431B1F94EF003691C4 /* HACLineChart.m in Sources */ = {isa = PBXBuildFile; fileRef = E31249421B1F94EF003691C4 /* HACLineChart.m */; };
+		E31249461B1F9503003691C4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E31249451B1F9503003691C4 /* AppDelegate.m */; };
+		E312494C1B1F9539003691C4 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = E31249481B1F9539003691C4 /* LaunchScreen.xib */; };
+		E312494D1B1F9539003691C4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E312494A1B1F9539003691C4 /* Main.storyboard */; };
+		E312494F1B1F954C003691C4 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E312494E1B1F954C003691C4 /* Images.xcassets */; };
+		E31249511B1F957E003691C4 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E31249501B1F957E003691C4 /* Info.plist */; };
 		E3E0ECFF1B1DF3FD006F9724 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E3E0ECFE1B1DF3FD006F9724 /* Default-568h@2x.png */; };
-		E3E0ED011B1DF445006F9724 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E3E0ED001B1DF445006F9724 /* main.m */; };
-		E3E0ED031B1DF472006F9724 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E3E0ED021B1DF472006F9724 /* Images.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,18 +34,18 @@
 		E310CF451B1C5AF800784DAC /* ChartTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ChartTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E310CF4A1B1C5AF800784DAC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E310CF4B1B1C5AF800784DAC /* ChartTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChartTests.m; sourceTree = "<group>"; };
-		E3E0ECE51B1DF3B9006F9724 /* HACLineChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HACLineChart.h; sourceTree = "<group>"; };
-		E3E0ECE61B1DF3B9006F9724 /* HACLineChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HACLineChart.m; sourceTree = "<group>"; };
-		E3E0ECE81B1DF3C3006F9724 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		E3E0ECE91B1DF3C3006F9724 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		E3E0ECEC1B1DF3C3006F9724 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = ExampleApp/Info.plist; sourceTree = "<group>"; };
+		E312493E1B1F949D003691C4 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ViewController.m; path = ExampleApp/ViewController.m; sourceTree = SOURCE_ROOT; };
+		E31249401B1F94DC003691C4 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = ExampleApp/main.m; sourceTree = SOURCE_ROOT; };
+		E31249421B1F94EF003691C4 /* HACLineChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HACLineChart.m; path = HACLineChart/HACLineChart.m; sourceTree = SOURCE_ROOT; };
+		E31249441B1F9503003691C4 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = ExampleApp/AppDelegate.h; sourceTree = SOURCE_ROOT; };
+		E31249451B1F9503003691C4 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = ExampleApp/AppDelegate.m; sourceTree = SOURCE_ROOT; };
+		E31249471B1F951D003691C4 /* HACLineChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HACLineChart.h; path = HACLineChart/HACLineChart.h; sourceTree = SOURCE_ROOT; };
+		E31249491B1F9539003691C4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = ExampleApp/Base.lproj/LaunchScreen.xib; sourceTree = SOURCE_ROOT; };
+		E312494B1B1F9539003691C4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = ExampleApp/Base.lproj/Main.storyboard; sourceTree = SOURCE_ROOT; };
+		E312494E1B1F954C003691C4 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = ExampleApp/Images.xcassets; sourceTree = SOURCE_ROOT; };
+		E31249501B1F957E003691C4 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = ExampleApp/Info.plist; sourceTree = SOURCE_ROOT; };
 		E3E0ECEE1B1DF3C3006F9724 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		E3E0ECEF1B1DF3C3006F9724 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		E3E0ECF71B1DF3DB006F9724 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		E3E0ECF91B1DF3DB006F9724 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		E3E0ECFE1B1DF3FD006F9724 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
-		E3E0ED001B1DF445006F9724 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = ExampleApp/main.m; sourceTree = "<group>"; };
-		E3E0ED021B1DF472006F9724 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,7 +88,7 @@
 		E310CF2E1B1C5AF800784DAC /* Chart */ = {
 			isa = PBXGroup;
 			children = (
-				E3E0ECD31B1DC1DF006F9724 /* HACLineChart */,
+				E3E0ECD31B1DC1DF006F9724 /* HACLBarChart */,
 				E3E0ECD21B1DC1D5006F9724 /* ExampleApp */,
 				E310CF2F1B1C5AF800784DAC /* Supporting Files */,
 			);
@@ -98,8 +98,8 @@
 		E310CF2F1B1C5AF800784DAC /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				E3E0ED001B1DF445006F9724 /* main.m */,
-				E3E0ECEC1B1DF3C3006F9724 /* Info.plist */,
+				E31249401B1F94DC003691C4 /* main.m */,
+				E31249501B1F957E003691C4 /* Info.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -124,23 +124,24 @@
 		E3E0ECD21B1DC1D5006F9724 /* ExampleApp */ = {
 			isa = PBXGroup;
 			children = (
-				E3E0ED021B1DF472006F9724 /* Images.xcassets */,
-				E3E0ECF61B1DF3DB006F9724 /* Main.storyboard */,
-				E3E0ECF81B1DF3DB006F9724 /* LaunchScreen.xib */,
-				E3E0ECE81B1DF3C3006F9724 /* AppDelegate.h */,
-				E3E0ECE91B1DF3C3006F9724 /* AppDelegate.m */,
+				E31249481B1F9539003691C4 /* LaunchScreen.xib */,
+				E312494E1B1F954C003691C4 /* Images.xcassets */,
+				E312494A1B1F9539003691C4 /* Main.storyboard */,
+				E31249441B1F9503003691C4 /* AppDelegate.h */,
+				E31249451B1F9503003691C4 /* AppDelegate.m */,
 				E3E0ECEE1B1DF3C3006F9724 /* ViewController.h */,
-				E3E0ECEF1B1DF3C3006F9724 /* ViewController.m */,
+				E312493E1B1F949D003691C4 /* ViewController.m */,
 			);
 			path = ExampleApp;
 			sourceTree = "<group>";
 		};
-		E3E0ECD31B1DC1DF006F9724 /* HACLineChart */ = {
+		E3E0ECD31B1DC1DF006F9724 /* HACLBarChart */ = {
 			isa = PBXGroup;
 			children = (
-				E3E0ECE51B1DF3B9006F9724 /* HACLineChart.h */,
-				E3E0ECE61B1DF3B9006F9724 /* HACLineChart.m */,
+				E31249471B1F951D003691C4 /* HACLineChart.h */,
+				E31249421B1F94EF003691C4 /* HACLineChart.m */,
 			);
+			name = HACLBarChart;
 			path = HACLineChart;
 			sourceTree = "<group>";
 		};
@@ -224,10 +225,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E3E0ECFB1B1DF3DB006F9724 /* LaunchScreen.xib in Resources */,
-				E3E0ECF31B1DF3C3006F9724 /* Info.plist in Resources */,
-				E3E0ED031B1DF472006F9724 /* Images.xcassets in Resources */,
-				E3E0ECFA1B1DF3DB006F9724 /* Main.storyboard in Resources */,
+				E312494C1B1F9539003691C4 /* LaunchScreen.xib in Resources */,
+				E312494F1B1F954C003691C4 /* Images.xcassets in Resources */,
+				E312494D1B1F9539003691C4 /* Main.storyboard in Resources */,
+				E31249511B1F957E003691C4 /* Info.plist in Resources */,
 				E3E0ECFF1B1DF3FD006F9724 /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -246,10 +247,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E3E0ECE71B1DF3B9006F9724 /* HACLineChart.m in Sources */,
-				E3E0ECF01B1DF3C3006F9724 /* AppDelegate.m in Sources */,
-				E3E0ED011B1DF445006F9724 /* main.m in Sources */,
-				E3E0ECF51B1DF3C3006F9724 /* ViewController.m in Sources */,
+				E31249461B1F9503003691C4 /* AppDelegate.m in Sources */,
+				E31249411B1F94DC003691C4 /* main.m in Sources */,
+				E312493F1B1F949D003691C4 /* ViewController.m in Sources */,
+				E31249431B1F94EF003691C4 /* HACLineChart.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -272,20 +273,20 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		E3E0ECF61B1DF3DB006F9724 /* Main.storyboard */ = {
+		E31249481B1F9539003691C4 /* LaunchScreen.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
-				E3E0ECF71B1DF3DB006F9724 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		E3E0ECF81B1DF3DB006F9724 /* LaunchScreen.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				E3E0ECF91B1DF3DB006F9724 /* Base */,
+				E31249491B1F9539003691C4 /* Base */,
 			);
 			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+		E312494A1B1F9539003691C4 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E312494B1B1F9539003691C4 /* Base */,
+			);
+			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -375,10 +376,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = Chart/ExampleApp/Info.plist;
+				INFOPLIST_FILE = ExampleApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Chart;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -387,10 +388,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = Chart/ExampleApp/Info.plist;
+				INFOPLIST_FILE = ExampleApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Chart;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -409,7 +410,7 @@
 				);
 				INFOPLIST_FILE = ChartTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = ChartTests;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Chart.app/Chart";
 			};
 			name = Debug;
@@ -424,7 +425,7 @@
 				);
 				INFOPLIST_FILE = ChartTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = ChartTests;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Chart.app/Chart";
 			};
 			name = Release;

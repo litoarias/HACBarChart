@@ -15,6 +15,10 @@
 @property (weak, nonatomic) IBOutlet HACLineChart *chart1;
 - (IBAction)tapClear:(id)sender;
 - (IBAction)tapSetData:(id)sender;
+- (IBAction)tapRealValue:(id)sender;
+- (IBAction)tapShowProgress:(id)sender;
+- (IBAction)tapReverse:(id)sender;
+- (IBAction)tapVertical:(id)sender;
 
 @end
 
