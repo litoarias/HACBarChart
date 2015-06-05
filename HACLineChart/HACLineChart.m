@@ -25,7 +25,7 @@
     _reverse                    = NO;
     _showRealValue              = NO;   // Show value contains _data, or real percent value
     _sizeLabelProgress          = 40;   // Width of label progress text
-    _maxValue                   = 1000; // max value for chart
+//    _maxValue                   = 1000; // max value for chart
     _progressTextColor          = [UIColor whiteColor];
     _progressTextFont           = [UIFont fontWithName:@"DINCondensed-Bold" size:12.0];
 }
@@ -52,8 +52,15 @@
     [self.layer.sublayers makeObjectsPerformSelector:@selector(removeFromSuperlayer)];
 }
 
+-(float)getMaxValue{
+    NSSortDescriptor *descriptor = [[NSSortDescriptor alloc] initWithKey:kHACPercentage  ascending:YES];
+    NSArray *consulados = [[self datos] sortedArrayUsingDescriptors:[NSArray arrayWithObjects:descriptor,nil]];
+    return [[[consulados lastObject]valueForKey:kHACPercentage] floatValue];
+}
 
 -(void)createChart{
+    
+    _maxValue ? _maxValue : (_maxValue = [self getMaxValue]);
     
     // Ancho de cada linea
     CGFloat widthLine = _vertical ? CGRectGetWidth(self.bounds)/_datos.count : CGRectGetHeight(self.bounds)/_datos.count;

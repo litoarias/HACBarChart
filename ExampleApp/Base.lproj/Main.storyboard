@@ -20,7 +20,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MS0-LJ-ly4" customClass="HACLineChart">
-                                <rect key="frame" x="0.0" y="20" width="600" height="362"/>
+                                <rect key="frame" x="0.0" y="20" width="600" height="110"/>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5KG-fF-QLO">
                                 <rect key="frame" x="16" y="441" width="50" height="30"/>
@@ -129,7 +129,7 @@
                             <constraint firstAttribute="bottom" secondItem="sjr-P0-pcH" secondAttribute="bottom" constant="20" symbolic="YES" id="Dgn-Bt-YW1"/>
                             <constraint firstAttribute="trailingMargin" secondItem="rok-xX-PIW" secondAttribute="trailing" constant="15" id="GTN-0n-vSl"/>
                             <constraint firstItem="MS0-LJ-ly4" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" id="fxe-f2-uhQ"/>
-                            <constraint firstItem="rok-xX-PIW" firstAttribute="top" secondItem="MS0-LJ-ly4" secondAttribute="bottom" constant="59" id="lXc-5C-dk3"/>
+                            <constraint firstItem="rok-xX-PIW" firstAttribute="top" secondItem="MS0-LJ-ly4" secondAttribute="bottom" constant="311" id="lXc-5C-dk3"/>
                             <constraint firstItem="5KG-fF-QLO" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="m5Y-8F-jel"/>
                             <constraint firstItem="MS0-LJ-ly4" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="nec-yV-62c"/>
                             <constraint firstItem="sjr-P0-pcH" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="8" id="rug-U2-RwO"/>
