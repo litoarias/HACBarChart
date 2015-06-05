@@ -172,8 +172,11 @@
         UILabel *progressText           = [[UILabel alloc]initWithFrame:frameLabel];
         progressText.text               = text;
         progressText.font               = _progressTextFont;
-        progressText.backgroundColor    = [UIColor colorWithRed:0.0f/255.0f green:255.0f/255.0f blue:0.0f/255.0f alpha:.5];
-        progressText.textAlignment      = NSTextAlignmentCenter;
+//        progressText.backgroundColor    = [UIColor colorWithRed:0.0f/255.0f green:255.0f/255.0f blue:0.0f/255.0f alpha:.5];
+        progressText.backgroundColor    = [UIColor clearColor];
+        
+        _vertical ? (progressText.textAlignment = NSTextAlignmentCenter) : (progressText.textAlignment = NSTextAlignmentCenter);
+        
         progressText.textColor          = _progressTextColor;
         progressText.numberOfLines      = 1;
         [progressText setMinimumScaleFactor:5.0/[UIFont labelFontSize]];
