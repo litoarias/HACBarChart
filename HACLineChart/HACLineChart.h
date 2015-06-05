@@ -8,7 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-#define kPercentage @"percentage"
+#define kHACPercentage @"percentage"
+#define kHACColor      @"color"
 
 @interface HACLineChart : UIView
 

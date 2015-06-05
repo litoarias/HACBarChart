@@ -8,7 +8,9 @@
 
 #import "ViewController.h"
 
-@interface ViewController ()
+@interface ViewController (){
+    NSArray *data;
+}
 
 @end
 
@@ -25,12 +27,94 @@
     _chart.reverse                  = YES;
     _chart.showProgress             = YES; // if showProgress == YES, and datos > 30 BUG, no caben en la grafica
     _chart.sizeLabelProgress        = 30;
-    _chart1.showRealValue           = YES;
+    _chart.showRealValue            = YES;
     _chart.maxValue                 = 1000;
     _chart.progressTextColor        = [UIColor blackColor];
-    _chart.backgroundColor          = [UIColor whiteColor];
+    _chart.backgroundColor          = [UIColor yellowColor];
     _chart.progressTextFont         = [UIFont fontWithName:@"HelveticaNeue" size:10];
     
+    data = @[
+             @{kHACPercentage:@1000, kHACColor : [UIColor purpleColor]},
+             @{kHACPercentage:@900, kHACColor  : [UIColor redColor]},
+             @{kHACPercentage:@800, kHACColor  : [UIColor cyanColor]},
+             @{kHACPercentage:@700, kHACColor  : [UIColor yellowColor]},
+             @{kHACPercentage:@600, kHACColor  : [UIColor blueColor]},
+             @{kHACPercentage:@500, kHACColor  : [UIColor blackColor]},
+             @{kHACPercentage:@400, kHACColor  : [UIColor orangeColor]},
+             @{kHACPercentage:@300, kHACColor  : [UIColor lightGrayColor]},
+             @{kHACPercentage:@200, kHACColor  : [UIColor magentaColor]},
+             @{kHACPercentage:@100, kHACColor  : [UIColor brownColor]},// 10
+             @{kHACPercentage:@1000},
+             @{kHACPercentage:@1000},
+             @{kHACPercentage:@1000},
+             @{kHACPercentage:@1000},
+             @{kHACPercentage:@1000},
+             @{kHACPercentage:@1000},
+             @{kHACPercentage:@1000},
+             @{kHACPercentage:@1000},
+             @{kHACPercentage:@1000},
+             @{kHACPercentage:@1000},// 20
+             //             @{kHACPercentage:@1000},
+             //             @{kHACPercentage:@1000},
+             //             @{kHACPercentage:@1000},
+             //             @{kHACPercentage:@1000},
+             //             @{kHACPercentage:@1000},
+             //             @{kHACPercentage:@1000},
+             //             @{kHACPercentage:@1000},
+             //             @{kHACPercentage:@1000},
+             //             @{kHACPercentage:@1000},
+             //             @{kHACPercentage:@1000},// 30
+             //             @{kHACPercentage:@1000},
+             //             @{kHACPercentage:@1000},
+             //             @{kHACPercentage:@1000},
+             //             @{kHACPercentage:@1000},
+             //             @{kHACPercentage:@1000},
+             //             @{kHACPercentage:@1000},
+             //             @{kHACPercentage:@1000},
+             //             @{kHACPercentage:@1000},
+             //             @{kHACPercentage:@1000},
+             //             @{kHACPercentage:@1000}, // 40
+             //             @{kHACPercentage:@1000},
+             //             @{kHACPercentage:@1000},
+             //             @{kHACPercentage:@1000},
+             //             @{kHACPercentage:@1000},
+             //             @{kHACPercentage:@1000},
+             //             @{kHACPercentage:@1000},
+             //             @{kHACPercentage:@1000},
+             //             @{kHACPercentage:@1000},
+             //             @{kHACPercentage:@1000},
+             //             @{kHACPercentage:@1000},// 50
+             //             @{kHACPercentage:@1000},
+             //             @{kHACPercentage:@1000},
+             //             @{kHACPercentage:@1000},
+             //             @{kHACPercentage:@1000},
+             //                     @{kHACPercentage:@1000},
+             //                     @{kHACPercentage:@1000},
+             //                     @{kHACPercentage:@1000},
+             //                     @{kHACPercentage:@1000},
+             //                     @{kHACPercentage:@1000},
+             //                     @{kHACPercentage:@1000}, // 60
+             //                     @{kHACPercentage:@1000},
+             //                     @{kHACPercentage:@1000},
+             //                     @{kHACPercentage:@1000},
+             //                     @{kHACPercentage:@1000},
+             //                     @{kHACPercentage:@1000},
+             //                     @{kHACPercentage:@1000},
+             //                     @{kHACPercentage:@1000},
+             //                     @{kHACPercentage:@1000},
+             //                     @{kHACPercentage:@1000},
+             //                     @{kHACPercentage:@1000},// 70
+             //                     @{kHACPercentage:@1000},
+             //                     @{kHACPercentage:@1000},
+             //                     @{kHACPercentage:@1000},
+             //                     @{kHACPercentage:@1000},
+             //                     @{kHACPercentage:@1000},
+             //                     @{kHACPercentage:@1000},
+             //                     @{kHACPercentage:@1000},
+             //                     @{kHACPercentage:@1000},
+             //                     @{kHACPercentage:@1000},
+             //                     @{kHACPercentage:@1000} // 80
+             ];
     
 }
 
@@ -38,89 +122,7 @@
     [super viewDidAppear:animated];
     
     ////// CHART 1 SET DATA
-    _chart.datos =@[
-                    @{kPercentage:@1000},
-                    @{kPercentage:@900},
-                    @{kPercentage:@800},
-                    @{kPercentage:@700},
-                    @{kPercentage:@600},
-                    @{kPercentage:@500},
-                    @{kPercentage:@400},
-                    @{kPercentage:@300},
-                    @{kPercentage:@200},
-                    @{kPercentage:@100},// 10
-                    //                     @{kPercentage:@1000},
-                    //                     @{kPercentage:@1000},
-                    //                     @{kPercentage:@1000},
-                    //                     @{kPercentage:@1000},
-                    //                     @{kPercentage:@1000},
-                    //                     @{kPercentage:@1000},
-                    //                     @{kPercentage:@1000},
-                    //                     @{kPercentage:@1000},
-                    //                     @{kPercentage:@1000},
-                    //                     @{kPercentage:@1000},// 20
-                    //                     @{kPercentage:@1000},
-                    //                     @{kPercentage:@1000},
-                    //                     @{kPercentage:@1000},
-                    //                     @{kPercentage:@1000},
-                    //                     @{kPercentage:@1000},
-                    //                     @{kPercentage:@1000},
-                    //                     @{kPercentage:@1000},
-                    //                     @{kPercentage:@1000},
-                    //                     @{kPercentage:@1000},
-                    //                     @{kPercentage:@1000},// 30
-                    //                     @{kPercentage:@1000},
-                    //                     @{kPercentage:@1000},
-                    //                     @{kPercentage:@1000},
-                    //                     @{kPercentage:@1000},
-                    //                     @{kPercentage:@1000},
-                    //                     @{kPercentage:@1000},
-                    //                     @{kPercentage:@1000},
-                    //                     @{kPercentage:@1000},
-                    //                     @{kPercentage:@1000},
-                    //                     @{kPercentage:@1000}, // 40
-                    //                     @{kPercentage:@1000},
-                    //                     @{kPercentage:@1000},
-                    //                     @{kPercentage:@1000},
-                    //                     @{kPercentage:@1000},
-                    //                     @{kPercentage:@1000},
-                    //                     @{kPercentage:@1000},
-                    //                     @{kPercentage:@1000},
-                    //                     @{kPercentage:@1000},
-                    //                     @{kPercentage:@1000},
-                    //                     @{kPercentage:@1000},// 50
-                    //                     @{kPercentage:@1000},
-                    //                     @{kPercentage:@1000},
-                    //                     @{kPercentage:@1000},
-                    //                     @{kPercentage:@1000},
-                    //                     @{kPercentage:@1000},
-                    //                     @{kPercentage:@1000},
-                    //                     @{kPercentage:@1000},
-                    //                     @{kPercentage:@1000},
-                    //                     @{kPercentage:@1000},
-                    //                     @{kPercentage:@1000}, // 60
-                    //                     @{kPercentage:@1000},
-                    //                     @{kPercentage:@1000},
-                    //                     @{kPercentage:@1000},
-                    //                     @{kPercentage:@1000},
-                    //                     @{kPercentage:@1000},
-                    //                     @{kPercentage:@1000},
-                    //                     @{kPercentage:@1000},
-                    //                     @{kPercentage:@1000},
-                    //                     @{kPercentage:@1000},
-                    //                     @{kPercentage:@1000},// 70
-                    //                     @{kPercentage:@1000},
-                    //                     @{kPercentage:@1000},
-                    //                     @{kPercentage:@1000},
-                    //                     @{kPercentage:@1000},
-                    //                     @{kPercentage:@1000},
-                    //                     @{kPercentage:@1000},
-                    //                     @{kPercentage:@1000},
-                    //                     @{kPercentage:@1000},
-                    //                     @{kPercentage:@1000},
-                    //                     @{kPercentage:@1000} // 80
-                    ];
-    
+    _chart.datos = data;
     
 }
 
@@ -131,7 +133,6 @@
 
 - (IBAction)tapClear:(id)sender {
     [_chart clearChart];
-    [_chart1 clearChart];
 }
 
 - (IBAction)tapSetData:(id)sender {
@@ -139,48 +140,8 @@
     [self tapClear:nil];
     
     ////// CHART SET DATA
-    _chart.datos =@[
-                    @{kPercentage:@1000},
-                    @{kPercentage:@900},
-                    @{kPercentage:@800},
-                    @{kPercentage:@700},
-                    @{kPercentage:@600},
-                    @{kPercentage:@500},
-                    @{kPercentage:@400},
-                    @{kPercentage:@300},
-                    @{kPercentage:@200},
-                    @{kPercentage:@100},// 10
-                    //                     @{kPercentage:@100},
-                    //                     @{kPercentage:@320},
-                    //                     @{kPercentage:@1000},
-                    //                     @{kPercentage:@1000},
-                    //                     @{kPercentage:@940},
-                    //                     @{kPercentage:@1000},
-                    //                     @{kPercentage:@234},
-                    //                     @{kPercentage:@423},
-                    //                     @{kPercentage:@130},
-                    //                     @{kPercentage:@1000},// 20
-                    //                     @{kPercentage:@1000},
-                    //                     @{kPercentage:@1000},
-                    //                     @{kPercentage:@1000},
-                    //                     @{kPercentage:@1000},
-                    //                     @{kPercentage:@1000},
-                    //                     @{kPercentage:@1000},
-                    //                     @{kPercentage:@1000},
-                    //                     @{kPercentage:@1000},
-                    //                     @{kPercentage:@1000},
-                    //                     @{kPercentage:@1000},// 30
-                    //                     @{kPercentage:@1000},
-                    //                     @{kPercentage:@1000},
-                    //                     @{kPercentage:@1000},
-                    //                     @{kPercentage:@1000},
-                    //                     @{kPercentage:@1000},
-                    //                     @{kPercentage:@1000},
-                    //                     @{kPercentage:@1000},
-                    //                     @{kPercentage:@1000},
-                    //                     @{kPercentage:@1000},
-                    //                     @{kPercentage:@1000},// 40
-                    ];
+    _chart.datos =data;
+    
     
 }
 

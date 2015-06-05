@@ -7,14 +7,14 @@
 	<key>IDESourceControlProjectIdentifier</key>
 	<string>2E934CA1-D99A-464E-916D-814389CF933B</string>
 	<key>IDESourceControlProjectName</key>
-	<string>Chart</string>
+	<string>project</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>BB45068D062F01D217C5BB6BA5A241D1F9E36F8E</key>
 		<string>https://github.com/litoarias/HACBarChart.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>Chart.xcodeproj</string>
+	<string>Chart.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>BB45068D062F01D217C5BB6BA5A241D1F9E36F8E</key>
