@@ -13,13 +13,13 @@
 
 @interface HACLineChart : UIView
 
-@property (nonatomic) BOOL demo;
 @property (nonatomic) BOOL vertical;
 @property (nonatomic) BOOL reverse;
 @property (nonatomic) BOOL showProgress;
 @property (nonatomic) BOOL showRealValue;
 @property (nonatomic) int sizeLabelProgress;
 @property (nonatomic) int maxValue;
+@property (nonatomic) int barMargin;
 @property (strong, nonatomic) UIColor *progressTextColor;
 @property (strong, nonatomic) UIFont *progressTextFont;
 

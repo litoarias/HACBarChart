@@ -10,6 +10,7 @@
 
 @interface ViewController (){
     NSArray *data;
+    NSTimer *timer;
 }
 
 @end
@@ -22,15 +23,14 @@
     
     
     ////// CHART
-    _chart.demo                     = NO;
     _chart.vertical                 = YES;
     _chart.reverse                  = YES;
     _chart.showProgress             = YES;
     _chart.sizeLabelProgress        = 30;
     _chart.showRealValue            = YES;
-//    _chart.maxValue                 = 1000;
-    _chart.progressTextColor        = [UIColor whiteColor];
-    _chart.backgroundColor          = [UIColor blackColor];
+    _chart.barMargin                = 0;
+    _chart.progressTextColor        = [UIColor blackColor];
+    _chart.backgroundColor          = [UIColor clearColor];
     _chart.progressTextFont         = [UIFont fontWithName:@"HelveticaNeue" size:10];
     
     data = @[
@@ -88,32 +88,32 @@
              //             @{kHACPercentage:@1000},
              //             @{kHACPercentage:@1000},
              //             @{kHACPercentage:@1000},
-             //                     @{kHACPercentage:@1000},
-             //                     @{kHACPercentage:@1000},
-             //                     @{kHACPercentage:@1000},
-             //                     @{kHACPercentage:@1000},
-             //                     @{kHACPercentage:@1000},
-             //                     @{kHACPercentage:@1000}, // 60
-             //                     @{kHACPercentage:@1000},
-             //                     @{kHACPercentage:@1000},
-             //                     @{kHACPercentage:@1000},
-             //                     @{kHACPercentage:@1000},
-             //                     @{kHACPercentage:@1000},
-             //                     @{kHACPercentage:@1000},
-             //                     @{kHACPercentage:@1000},
-             //                     @{kHACPercentage:@1000},
-             //                     @{kHACPercentage:@1000},
-             //                     @{kHACPercentage:@1000},// 70
-             //                     @{kHACPercentage:@1000},
-             //                     @{kHACPercentage:@1000},
-             //                     @{kHACPercentage:@1000},
-             //                     @{kHACPercentage:@1000},
-             //                     @{kHACPercentage:@1000},
-             //                     @{kHACPercentage:@1000},
-             //                     @{kHACPercentage:@1000},
-             //                     @{kHACPercentage:@1000},
-             //                     @{kHACPercentage:@1000},
-             //                     @{kHACPercentage:@1000} // 80
+             //             @{kHACPercentage:@1000},
+             //             @{kHACPercentage:@1000},
+             //             @{kHACPercentage:@1000},
+             //             @{kHACPercentage:@1000},
+             //             @{kHACPercentage:@1000},
+             //             @{kHACPercentage:@1000}, // 60
+             //             @{kHACPercentage:@1000},
+             //             @{kHACPercentage:@1000},
+             //             @{kHACPercentage:@1000},
+             //             @{kHACPercentage:@1000},
+             //             @{kHACPercentage:@1000},
+             //             @{kHACPercentage:@1000},
+             //             @{kHACPercentage:@1000},
+             //             @{kHACPercentage:@1000},
+             //             @{kHACPercentage:@1000},
+             //             @{kHACPercentage:@1000},// 70
+             //             @{kHACPercentage:@1000},
+             //             @{kHACPercentage:@1000},
+             //             @{kHACPercentage:@1000},
+             //             @{kHACPercentage:@1000},
+             //             @{kHACPercentage:@1000},
+             //             @{kHACPercentage:@1000},
+             //             @{kHACPercentage:@1000},
+             //             @{kHACPercentage:@1000},
+             //             @{kHACPercentage:@1000},
+             //             @{kHACPercentage:@1000} // 80
              ];
     
 }
@@ -129,6 +129,21 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (IBAction)slideAction:(id)sender {
+    UISlider *slide = (UISlider *)sender;
+    _chart.barMargin = slide.value;
+    
+    if ([timer isValid]) {
+        [timer invalidate];
+    }
+    timer = [NSTimer scheduledTimerWithTimeInterval:1.0
+                                             target:self
+                                           selector:@selector(tapSetData:)
+                                           userInfo:nil
+                                            repeats:NO];
+    
 }
 
 - (IBAction)tapClear:(id)sender {

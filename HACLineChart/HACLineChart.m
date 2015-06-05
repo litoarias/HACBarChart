@@ -19,13 +19,13 @@
 
 - (void)defaultInit
 {
-    _demo                       = NO;   // Max 10 values in _data
     _showProgress               = NO;   // Show text for bar
     _vertical                   = NO;
     _reverse                    = NO;
     _showRealValue              = NO;   // Show value contains _data, or real percent value
     _sizeLabelProgress          = 40;   // Width of label progress text
-//    _maxValue                   = 1000; // max value for chart
+    //    _maxValue                   = 1000; // max value for chart
+    _barMargin                  = 0;
     _progressTextColor          = [UIColor whiteColor];
     _progressTextFont           = [UIFont fontWithName:@"DINCondensed-Bold" size:12.0];
 }
@@ -65,8 +65,6 @@
     // Ancho de cada linea
     CGFloat widthLine = _vertical ? CGRectGetWidth(self.bounds)/_datos.count : CGRectGetHeight(self.bounds)/_datos.count;
     
-//    widthLine = _showProgress ? widthLine-(_datos.count/_sizeLabelProgress) : widthLine;
-    
     // Posicion X de cada línea (separacion entre ellas)
     CGFloat positionX = 0;
     
@@ -77,19 +75,17 @@
     // Progreso
     CGFloat progress;
     
+    if (_barMargin >= widthLine) {
+        NSLog(@"Margin it's excessive width bar it's %f and margin %d",widthLine,_barMargin);
+        _barMargin=0;
+    }
+    
     for (int i = 1; i<=_datos.count; i++) {
         
         CGFloat value = 0.0;
-        if (_demo) {
-            ////// Dinamyc progress
-            progress = _vertical ? (CGRectGetHeight(self.bounds) * ([[NSNumber numberWithInt:i]floatValue]/10)) : (CGRectGetWidth(self.bounds) * ([[NSNumber numberWithInt:i]floatValue]/10));
-            
-            // Dynamic Progress
-            _showProgress ? progress -=_sizeLabelProgress : progress;
-        }else{
-            value = [[[_datos objectAtIndex:i-1] valueForKey:kHACPercentage]floatValue];
-            progress = (value * progress100) / _maxValue;
-        }
+        
+        value = [[[_datos objectAtIndex:i-1] valueForKey:kHACPercentage]floatValue];
+        progress = (value * progress100) / _maxValue;
         
         // Get Progress real
         int realPercent = (progress*100)/progress100;
@@ -97,6 +93,28 @@
         // EL pincel pinta desde la mitad de la X, por eso hay que ajustar el grosor de la pintada para que pinte desde la izquierda
         positionX = widthLine*(i-1);
         positionX += widthLine/2;
+        
+        
+        UIColor *barColor;
+        [[_datos objectAtIndex:i-1] valueForKey:kHACColor] ? (barColor = [[_datos objectAtIndex:i-1] valueForKey:kHACColor]) : (barColor = [UIColor colorWithHue:drand48() saturation:1.0 brightness:1.0 alpha:1.0]);
+        
+        
+        // CAShapeLayer for line
+        CAShapeLayer *pathMarginLayer = [CAShapeLayer layer];
+        pathMarginLayer.lineWidth = widthLine;
+        pathMarginLayer.lineCap = kCALineCapButt;
+        pathMarginLayer.lineJoin = kCALineJoinBevel;
+        
+        
+        // CAShapeLayer for line
+        CAShapeLayer *pathLayer = [CAShapeLayer layer];
+        [pathMarginLayer addSublayer:pathLayer];
+        pathLayer.strokeColor = [barColor CGColor];
+        pathLayer.lineWidth = widthLine-_barMargin;
+        pathLayer.lineCap = kCALineCapButt;
+        pathLayer.lineJoin = kCALineJoinBevel;
+        pathLayer.fillColor = [[UIColor clearColor]CGColor];
+        
         
         /////// LINE CHART
         // Guia de dibujo de la linea
@@ -124,21 +142,10 @@
             }
         }
         
-        // CAShapeLayer for line
-        CAShapeLayer *pathLayer = [CAShapeLayer layer];
-        pathLayer.path = path.CGPath;
-        
-        UIColor *barColor;
-        
-        [[_datos objectAtIndex:i-1] valueForKey:kHACColor] ? (barColor = [[_datos objectAtIndex:i-1] valueForKey:kHACColor]) : (barColor = [UIColor colorWithHue:drand48() saturation:1.0 brightness:1.0 alpha:1.0]);
-        
-        pathLayer.strokeColor = [barColor CGColor];
-        pathLayer.lineWidth = widthLine;
-        pathLayer.lineCap = kCALineCapButt;
-        pathLayer.lineJoin = kCALineJoinBevel;
-        pathLayer.fillColor = [[UIColor clearColor]CGColor];
         // Insert layer
         [self.layer insertSublayer:pathLayer above:self.layer];
+        
+        pathMarginLayer.path = pathLayer.path = path.CGPath;
         
         // Animation for line chart
         CABasicAnimation *pathAnimation = [CABasicAnimation animationWithKeyPath:@"strokeEnd"];
@@ -146,6 +153,8 @@
         pathAnimation.fromValue = [NSNumber numberWithFloat:0.0f];
         pathAnimation.toValue = [NSNumber numberWithFloat:1.0f];
         [pathLayer addAnimation:pathAnimation forKey:@"strokeEnd"];
+        
+        
         
         
         ////// LABEL
