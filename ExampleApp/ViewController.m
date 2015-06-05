@@ -29,12 +29,12 @@
     _chart.sizeLabelProgress        = 30;
     _chart.showRealValue            = YES;
 //    _chart.maxValue                 = 1000;
-    _chart.progressTextColor        = [UIColor blackColor];
-    _chart.backgroundColor          = [UIColor orangeColor];
+    _chart.progressTextColor        = [UIColor whiteColor];
+    _chart.backgroundColor          = [UIColor blackColor];
     _chart.progressTextFont         = [UIFont fontWithName:@"HelveticaNeue" size:10];
     
     data = @[
-             @{kHACPercentage:@900, kHACColor : [UIColor colorWithRed:0.000f green:0.620f blue:0.890f alpha:1.00f]},
+             @{kHACPercentage:@1000, kHACColor : [UIColor colorWithRed:0.000f green:0.620f blue:0.890f alpha:1.00f]},
              @{kHACPercentage:@900, kHACColor  : [UIColor colorWithRed:0.431f green:0.000f blue:0.533f alpha:1.00f]},
              @{kHACPercentage:@800, kHACColor  : [UIColor colorWithRed:0.922f green:0.000f blue:0.000f alpha:1.00f]},
              @{kHACPercentage:@700, kHACColor  : [UIColor colorWithRed:0.000f green:0.671f blue:0.180f alpha:1.00f]},

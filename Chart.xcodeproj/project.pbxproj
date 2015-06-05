@@ -16,6 +16,7 @@
 		E312494D1B1F9539003691C4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E312494A1B1F9539003691C4 /* Main.storyboard */; };
 		E312494F1B1F954C003691C4 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E312494E1B1F954C003691C4 /* Images.xcassets */; };
 		E31249511B1F957E003691C4 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E31249501B1F957E003691C4 /* Info.plist */; };
+		E33A99D41B21B68C00C9FFCF /* Screencast.gif in Resources */ = {isa = PBXBuildFile; fileRef = E33A99D31B21B68C00C9FFCF /* Screencast.gif */; };
 		E3E0ECFF1B1DF3FD006F9724 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E3E0ECFE1B1DF3FD006F9724 /* Default-568h@2x.png */; };
 /* End PBXBuildFile section */
 
@@ -44,6 +45,7 @@
 		E312494B1B1F9539003691C4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = ExampleApp/Base.lproj/Main.storyboard; sourceTree = SOURCE_ROOT; };
 		E312494E1B1F954C003691C4 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = ExampleApp/Images.xcassets; sourceTree = SOURCE_ROOT; };
 		E31249501B1F957E003691C4 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = ExampleApp/Info.plist; sourceTree = SOURCE_ROOT; };
+		E33A99D31B21B68C00C9FFCF /* Screencast.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = Screencast.gif; sourceTree = SOURCE_ROOT; };
 		E3E0ECEE1B1DF3C3006F9724 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		E3E0ECFE1B1DF3FD006F9724 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -98,6 +100,7 @@
 		E310CF2F1B1C5AF800784DAC /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				E33A99D31B21B68C00C9FFCF /* Screencast.gif */,
 				E31249401B1F94DC003691C4 /* main.m */,
 				E31249501B1F957E003691C4 /* Info.plist */,
 			);
@@ -226,6 +229,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E312494C1B1F9539003691C4 /* LaunchScreen.xib in Resources */,
+				E33A99D41B21B68C00C9FFCF /* Screencast.gif in Resources */,
 				E312494F1B1F954C003691C4 /* Images.xcassets in Resources */,
 				E312494D1B1F9539003691C4 /* Main.storyboard in Resources */,
 				E31249511B1F957E003691C4 /* Info.plist in Resources */,
