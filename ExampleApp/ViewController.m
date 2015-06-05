@@ -26,7 +26,7 @@
     _chart.vertical                 = YES;
     _chart.reverse                  = YES;
     _chart.showProgress             = YES;
-    _chart.sizeLabelProgress        = 50;
+    _chart.sizeLabelProgress        = 30;
     _chart.showRealValue            = YES;
     _chart.barMargin                = 0;
     _chart.customText               = YES;
@@ -45,8 +45,8 @@
              @{kHACPercentage:@300,  kHACColor  : [UIColor colorWithRed:1.000f green:0.404f blue:0.000f alpha:1.00f], kHACCustomText : @"August"},
              @{kHACPercentage:@200,  kHACColor  : [UIColor colorWithRed:0.282f green:0.631f blue:0.620f alpha:1.00f], kHACCustomText : @"September"},
              @{kHACPercentage:@100,  kHACColor  : [UIColor colorWithRed:0.776f green:0.000f blue:0.702f alpha:1.00f], kHACCustomText : @"October"},
-             @{kHACPercentage:@200,  kHACColor  : [UIColor colorWithRed:0.282f green:0.631f blue:0.620f alpha:1.00f], kHACCustomText : @"November"},
-             @{kHACPercentage:@100,  kHACColor  : [UIColor colorWithRed:0.776f green:0.000f blue:0.702f alpha:1.00f], kHACCustomText : @"December"},// 10
+             @{kHACPercentage:@50,  kHACColor   : [UIColor colorWithRed:0.282f green:0.631f blue:0.620f alpha:1.00f], kHACCustomText : @"November"},
+             @{kHACPercentage:@25,  kHACColor   : [UIColor colorWithRed:0.776f green:0.000f blue:0.702f alpha:1.00f], kHACCustomText : @"December"},// 10
              //             @{kHACPercentage:@1000},
              //             @{kHACPercentage:@1000},
              //             @{kHACPercentage:@1000},
