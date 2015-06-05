@@ -26,24 +26,27 @@
     _chart.vertical                 = YES;
     _chart.reverse                  = YES;
     _chart.showProgress             = YES;
-    _chart.sizeLabelProgress        = 30;
+    _chart.sizeLabelProgress        = 50;
     _chart.showRealValue            = YES;
     _chart.barMargin                = 0;
+    _chart.customText               = YES;
     _chart.progressTextColor        = [UIColor blackColor];
     _chart.backgroundColor          = [UIColor clearColor];
     _chart.progressTextFont         = [UIFont fontWithName:@"HelveticaNeue" size:10];
     
     data = @[
-             @{kHACPercentage:@1000, kHACColor : [UIColor colorWithRed:0.000f green:0.620f blue:0.890f alpha:1.00f]},
-             @{kHACPercentage:@900, kHACColor  : [UIColor colorWithRed:0.431f green:0.000f blue:0.533f alpha:1.00f]},
-             @{kHACPercentage:@800, kHACColor  : [UIColor colorWithRed:0.922f green:0.000f blue:0.000f alpha:1.00f]},
-             @{kHACPercentage:@700, kHACColor  : [UIColor colorWithRed:0.000f green:0.671f blue:0.180f alpha:1.00f]},
-             @{kHACPercentage:@600, kHACColor  : [UIColor colorWithRed:1.000f green:0.000f blue:0.851f alpha:1.00f]},
-             @{kHACPercentage:@500, kHACColor  : [UIColor colorWithRed:1.000f green:0.808f blue:0.000f alpha:1.00f]},
-             @{kHACPercentage:@400, kHACColor  : [UIColor colorWithRed:0.294f green:0.843f blue:0.251f alpha:1.00f]},
-             @{kHACPercentage:@300, kHACColor  : [UIColor colorWithRed:1.000f green:0.404f blue:0.000f alpha:1.00f]},
-             @{kHACPercentage:@200, kHACColor  : [UIColor colorWithRed:0.282f green:0.631f blue:0.620f alpha:1.00f]},
-             @{kHACPercentage:@100, kHACColor  : [UIColor colorWithRed:0.776f green:0.000f blue:0.702f alpha:1.00f]},// 10
+             @{kHACPercentage:@1000, kHACColor  : [UIColor colorWithRed:0.000f green:0.620f blue:0.890f alpha:1.00f], kHACCustomText : @"January"},
+             @{kHACPercentage:@900,  kHACColor  : [UIColor colorWithRed:0.431f green:0.000f blue:0.533f alpha:1.00f], kHACCustomText : @"February"},
+             @{kHACPercentage:@800,  kHACColor  : [UIColor colorWithRed:0.922f green:0.000f blue:0.000f alpha:1.00f], kHACCustomText : @"March"},
+             @{kHACPercentage:@700,  kHACColor  : [UIColor colorWithRed:0.000f green:0.671f blue:0.180f alpha:1.00f], kHACCustomText : @"April"},
+             @{kHACPercentage:@600,  kHACColor  : [UIColor colorWithRed:1.000f green:0.000f blue:0.851f alpha:1.00f], kHACCustomText : @"May"},
+             @{kHACPercentage:@500,  kHACColor  : [UIColor colorWithRed:1.000f green:0.808f blue:0.000f alpha:1.00f], kHACCustomText : @"June"},
+             @{kHACPercentage:@400,  kHACColor  : [UIColor colorWithRed:0.294f green:0.843f blue:0.251f alpha:1.00f], kHACCustomText : @"Juli"},
+             @{kHACPercentage:@300,  kHACColor  : [UIColor colorWithRed:1.000f green:0.404f blue:0.000f alpha:1.00f], kHACCustomText : @"August"},
+             @{kHACPercentage:@200,  kHACColor  : [UIColor colorWithRed:0.282f green:0.631f blue:0.620f alpha:1.00f], kHACCustomText : @"September"},
+             @{kHACPercentage:@100,  kHACColor  : [UIColor colorWithRed:0.776f green:0.000f blue:0.702f alpha:1.00f], kHACCustomText : @"October"},
+             @{kHACPercentage:@200,  kHACColor  : [UIColor colorWithRed:0.282f green:0.631f blue:0.620f alpha:1.00f], kHACCustomText : @"November"},
+             @{kHACPercentage:@100,  kHACColor  : [UIColor colorWithRed:0.776f green:0.000f blue:0.702f alpha:1.00f], kHACCustomText : @"December"},// 10
              //             @{kHACPercentage:@1000},
              //             @{kHACPercentage:@1000},
              //             @{kHACPercentage:@1000},
@@ -83,7 +86,7 @@
              //             @{kHACPercentage:@1000},
              //             @{kHACPercentage:@1000},
              //             @{kHACPercentage:@1000},
-             //             @{kHACPercentage:@1000},// 50
+             //             @{kHACPercentage:@1000}, // 50
              //             @{kHACPercentage:@1000},
              //             @{kHACPercentage:@1000},
              //             @{kHACPercentage:@1000},
@@ -103,7 +106,7 @@
              //             @{kHACPercentage:@1000},
              //             @{kHACPercentage:@1000},
              //             @{kHACPercentage:@1000},
-             //             @{kHACPercentage:@1000},// 70
+             //             @{kHACPercentage:@1000}, // 70
              //             @{kHACPercentage:@1000},
              //             @{kHACPercentage:@1000},
              //             @{kHACPercentage:@1000},

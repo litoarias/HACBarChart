@@ -25,6 +25,7 @@
     _showRealValue              = NO;   // Show value contains _data, or real percent value
     _sizeLabelProgress          = 40;   // Width of label progress text
     //    _maxValue                   = 1000; // max value for chart
+    _customText                 = NO;
     _barMargin                  = 0;
     _progressTextColor          = [UIColor whiteColor];
     _progressTextFont           = [UIFont fontWithName:@"DINCondensed-Bold" size:12.0];
@@ -159,15 +160,19 @@
         
         ////// LABEL
         // CreaTe Laber progress
-        CGRect frameLabel = !_vertical ? CGRectMake(progress, (widthLine*i)-widthLine, _sizeLabelProgress, widthLine) : CGRectMake((widthLine*i)-widthLine, progress, widthLine, _sizeLabelProgress);
+        CGRect frameLabel = !_vertical ? CGRectMake(0, (widthLine*i)-widthLine, _sizeLabelProgress, widthLine) : CGRectMake((widthLine*i)-widthLine, progress, widthLine, _sizeLabelProgress);
         
         NSString *text;
-        _showRealValue ? (text = [NSString stringWithFormat:@"%.0f",value]) : (text = [NSString stringWithFormat:@"%d%%",realPercent]);
+        if (_customText && [[_datos objectAtIndex:i-1]valueForKey:kHACCustomText]) {
+            _showRealValue ? (text = [[_datos objectAtIndex:i-1]valueForKey:kHACCustomText]) : (text = [NSString stringWithFormat:@"%d%%",realPercent]);
+        }else{
+            _showRealValue ? (text = [NSString stringWithFormat:@"%.0f",value]) : (text = [NSString stringWithFormat:@"%d%%",realPercent]);
+        }
         
         UILabel *progressText           = [[UILabel alloc]initWithFrame:frameLabel];
         progressText.text               = text;
         progressText.font               = _progressTextFont;
-        progressText.backgroundColor    = [UIColor clearColor];
+        progressText.backgroundColor    = [UIColor colorWithRed:0.0f/255.0f green:255.0f/255.0f blue:0.0f/255.0f alpha:.5];
         progressText.textAlignment      = NSTextAlignmentCenter;
         progressText.textColor          = _progressTextColor;
         progressText.numberOfLines      = 1;
@@ -188,22 +193,22 @@
         if (_vertical) {
             if (_reverse) {
                 ////// VERTICAL TOP TO BOTTOM
-                animationLabel.fromValue  = [NSNumber numberWithFloat:20.0f];
-                animationLabel.toValue = @(progress+16);
+                animationLabel.fromValue  = [NSNumber numberWithFloat:_sizeLabelProgress/2];
+                animationLabel.toValue = @(progress+_sizeLabelProgress/2);
             }else{
                 ////// VERTICAL BOTTOM TO TOP
-                animationLabel.fromValue  = [NSNumber numberWithFloat:CGRectGetHeight(self.bounds) - 20.0f];
+                animationLabel.fromValue  = [NSNumber numberWithFloat:CGRectGetHeight(self.bounds) - _sizeLabelProgress/2];
                 animationLabel.toValue = @((CGRectGetHeight(self.bounds)-progress) - _sizeLabelProgress/2);
             }
         }else{
             if (_reverse) {
-                ////// VERTICAL RIGTH TO LEFT
-                animationLabel.fromValue  = [NSNumber numberWithFloat:CGRectGetWidth(self.bounds)-20];
-                animationLabel.toValue = @(CGRectGetWidth(self.bounds)-progress-16);
+                ////// HORIZONTAL RIGTH TO LEFT
+                animationLabel.fromValue  = [NSNumber numberWithFloat:CGRectGetWidth(self.bounds)-_sizeLabelProgress/2];
+                animationLabel.toValue = @(CGRectGetWidth(self.bounds)-progress-_sizeLabelProgress/2);
             }else{
                 ////// HORIZONTAL LEFT TO RIGHT
-                animationLabel.fromValue  = [NSNumber numberWithFloat:20.0f];
-                animationLabel.toValue = @(progress+16);
+                animationLabel.fromValue  = [NSNumber numberWithFloat:_sizeLabelProgress/2];
+                animationLabel.toValue = @(progress + _sizeLabelProgress/2);
             }
         }
         

@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-#define kHACPercentage @"percentage"
-#define kHACColor      @"color"
+#define kHACPercentage      @"percentage"
+#define kHACColor           @"color"
+#define kHACCustomText      @"customText"
 
 @interface HACLineChart : UIView
 
@@ -17,6 +18,7 @@
 @property (nonatomic) BOOL reverse;
 @property (nonatomic) BOOL showProgress;
 @property (nonatomic) BOOL showRealValue;
+@property (nonatomic) BOOL customText;
 @property (nonatomic) int sizeLabelProgress;
 @property (nonatomic) int maxValue;
 @property (nonatomic) int barMargin;
