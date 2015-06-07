@@ -12,8 +12,8 @@
 @interface ViewController : UIViewController
 
 @property (weak, nonatomic) IBOutlet HACLineChart *chart;
-- (IBAction)slideAction:(id)sender;
 
+- (IBAction)slideAction:(id)sender;
 - (IBAction)tapClear:(id)sender;
 - (IBAction)tapSetData:(id)sender;
 - (IBAction)tapRealValue:(id)sender;

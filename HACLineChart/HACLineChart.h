@@ -19,14 +19,17 @@
 @property (nonatomic) BOOL showProgress;
 @property (nonatomic) BOOL showRealValue;
 @property (nonatomic) BOOL customText;
+
 @property (nonatomic) int sizeLabelProgress;
 @property (nonatomic) int maxValue;
 @property (nonatomic) int barMargin;
+
 @property (strong, nonatomic) UIColor *progressTextColor;
 @property (strong, nonatomic) UIFont *progressTextFont;
 
-@property (strong, nonatomic) NSArray *datos;
+@property (strong, nonatomic) NSArray *data;
 
 - (void)clearChart;
+- (void)draw;
 
 @end
