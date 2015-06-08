@@ -10,11 +10,14 @@
 
 @implementation HACLineChart
 
+CGFloat marginAxis = 0.0;
+CGFloat const constantMarginAxis = 25.0;
 
 # pragma mark - Life cycle
 
 - (void)defaultInit
 {
+    _showAxis                   = YES;
     _showProgress               = NO;   // Show text for bar
     _vertical                   = NO;   // Orientation chart
     _reverse                    = NO;   // Orientation chart
@@ -48,10 +51,6 @@
     [self createChart];
 }
 
--(void)setData:(NSArray *)data
-{
-    _data = data;
-}
 
 -(void)clearChart{
     [self.layer.sublayers makeObjectsPerformSelector:@selector(removeFromSuperlayer)];
@@ -64,18 +63,21 @@
     NSArray *consulados = [[self data] sortedArrayUsingDescriptors:[NSArray arrayWithObjects:descriptor,nil]];
     return [[[consulados lastObject]valueForKey:kHACPercentage] floatValue];
 }
-
 -(int)getMaxValue{
-    return _maxValue ? _maxValue : (_maxValue = [self calculateMaxValue]);
+    return _maxValue ? abs(_maxValue) : abs((_maxValue = [self calculateMaxValue]));
 }
 
 -(CGFloat)getWitdOfLine{
-    return _vertical ? CGRectGetWidth(self.bounds)/_data.count : CGRectGetHeight(self.bounds)/_data.count;
+    return _vertical ? ( CGRectGetWidth(self.bounds) - marginAxis ) / _data.count : (CGRectGetHeight(self.bounds) - marginAxis) / _data.count;
 }
 
 -(CGFloat)getMaxiumProgress{
     CGFloat progress100 = _vertical ? CGRectGetHeight(self.bounds) : CGRectGetWidth(self.bounds);
-    return _showProgress ? progress100-_sizeLabelProgress : progress100;
+    return _showProgress ? progress100 - _sizeLabelProgress : progress100;
+}
+
+-(CGFloat)getMaxiumProgressWithAxisAndLastMaxiumProgress:(CGFloat)progress100{
+    return progress100 - marginAxis;
 }
 
 -(void)checkWidthBarPossibleWithWidthBar:(CGFloat)width{
@@ -123,18 +125,18 @@
             [pathBar addLineToPoint:CGPointMake(positionX, progress)];
         }else{
             ////// VERTICAL BOTTOM TO TOP
-            [pathBar moveToPoint:CGPointMake(positionX,CGRectGetHeight(self.bounds))];
-            [pathBar addLineToPoint:CGPointMake(positionX, CGRectGetHeight(self.bounds)-progress)];
+            [pathBar moveToPoint:CGPointMake(positionX,CGRectGetHeight(self.bounds) - marginAxis)];
+            [pathBar addLineToPoint:CGPointMake(positionX, CGRectGetHeight(self.bounds) - (progress + marginAxis))];
         }
     }else{
         if (_reverse) {
             ////// VERTICAL RIGTH TO LEFT
-            [pathBar moveToPoint:CGPointMake(CGRectGetWidth(self.bounds), positionX)];
-            [pathBar addLineToPoint:CGPointMake(CGRectGetWidth(self.bounds)-progress, positionX)];
+            [pathBar moveToPoint:CGPointMake(CGRectGetWidth(self.bounds), positionX - marginAxis)];
+            [pathBar addLineToPoint:CGPointMake(CGRectGetWidth(self.bounds) - progress, positionX - marginAxis)];
         }else{
             ////// HORIZONTAL LEFT TO RIGHT
-            [pathBar moveToPoint:CGPointMake(0.0, positionX)];
-            [pathBar addLineToPoint:CGPointMake(progress, positionX)];
+            [pathBar moveToPoint:CGPointMake(marginAxis, positionX - marginAxis)];
+            [pathBar addLineToPoint:CGPointMake(progress + marginAxis, positionX - marginAxis)];
         }
     }
     return pathBar;
@@ -154,7 +156,11 @@
 # pragma mark - UILabel Methods
 
 -(CGRect)getFrameLabelWith:(CGFloat)witdthBar index:(int)index progress:(CGFloat)progress{
-    return !_vertical ? CGRectMake(0, (witdthBar*index)-witdthBar, _sizeLabelProgress, witdthBar) : CGRectMake((witdthBar*index)-witdthBar, progress, witdthBar, _sizeLabelProgress);
+    //    if (_showAxis) {
+    //        return !_vertical ? CGRectMake(marginAxis, (witdthBar * index) - witdthBar, _sizeLabelProgress, witdthBar) : CGRectMake((witdthBar * index) - witdthBar + marginAxis, progress, witdthBar, _sizeLabelProgress);
+    //    }else{
+    return !_vertical ? CGRectMake(marginAxis, (witdthBar * index) - witdthBar, _sizeLabelProgress, witdthBar) : CGRectMake((witdthBar * index) - witdthBar + marginAxis, progress, witdthBar, _sizeLabelProgress);
+    //    }
 }
 
 -(NSString*)getTextWithIndex:(int)index realPercent:(int)realPercent value:(CGFloat)value{
@@ -210,13 +216,62 @@
     
     animationLabel.removedOnCompletion = NO;
     animationLabel.fillMode = kCAFillModeBoth;
-
+    
     return animationLabel;
+}
+
+
+# pragma mark - Axis Bar
+
+
+-(int)roundAxisMaxValue{
+   return (int)ceil(234.0);
+    
+}
+
+-(void)setupHorizontalAxis{
+    
+    UIBezierPath *path = [UIBezierPath bezierPath];
+    [path moveToPoint:CGPointMake(marginAxis-1, CGRectGetHeight(self.bounds) - marginAxis +1)];
+    [path addLineToPoint:CGPointMake(CGRectGetWidth(self.bounds), CGRectGetHeight(self.bounds) - marginAxis)];
+    CAShapeLayer *shapeLayer = [CAShapeLayer layer];
+    shapeLayer.path = [path CGPath];
+    shapeLayer.strokeColor = [[UIColor blackColor] CGColor];
+    shapeLayer.lineWidth = 1.0;
+    shapeLayer.fillColor = [[UIColor clearColor] CGColor];
+    
+    [self.layer addSublayer:shapeLayer];
+}
+
+-(void)setupVerticalAxis{
+    
+    UIBezierPath *path = [UIBezierPath bezierPath];
+    [path moveToPoint:CGPointMake(marginAxis - 1, 0.0)];
+    [path addLineToPoint:CGPointMake(marginAxis - 1, CGRectGetHeight(self.bounds) - marginAxis + 1.5)];
+    
+    CAShapeLayer *shapeLayer = [CAShapeLayer layer];
+    shapeLayer.path = [path CGPath];
+    shapeLayer.strokeColor = [[UIColor blackColor] CGColor];
+    shapeLayer.lineWidth = 1.0;
+    shapeLayer.fillColor = [[UIColor clearColor] CGColor];
+    
+    [self.layer addSublayer:shapeLayer];
 }
 
 # pragma mark - Construct Chart
 
 -(void)createChart{
+    
+    
+    NSLog(@"%d",[self roundAxisMaxValue]);
+    
+    if (_showAxis) {
+        marginAxis = constantMarginAxis;
+        _showProgress=NO;
+        [self setupHorizontalAxis];
+        [self setupVerticalAxis];
+    }
+    
     
     // Máximo valor posible de los datos obtenidos (Valor mas alto)
     int maxVal = [self getMaxValue];
@@ -225,8 +280,7 @@
     CGFloat widthLine = [self getWitdOfLine];
     
     // Progreso máximo posible de la barra, dependiendo de la orientación elegida, se auto ajustará
-    CGFloat progress100 = [self getMaxiumProgress];
-    
+    CGFloat progress100 = [self getMaxiumProgressWithAxisAndLastMaxiumProgress:[self getMaxiumProgress]];
     
     // Progreso
     CGFloat progress;
@@ -245,12 +299,14 @@
         // Get real Progress
         int realPercent = (progress*100)/progress100;
         
-        // Posicion X de cada línea (separacion entre ellas)
-        CGFloat positionX = ( (widthLine * (i - 1)) + (widthLine / 2) );
+        // Posicion X de cada línea (separación entre ellas)
+        CGFloat positionX = _showAxis ? ((widthLine * (i - 1)) + (widthLine / 2) + marginAxis) : ((widthLine * (i - 1)) + (widthLine / 2));
+        
         
         UIColor *barColor = [self getBarColorWithIndex:i];
+        //        UIColor *barColor=[UIColor clearColor];
         
-        // CAShapeLayer margin for bar
+        // CAShapeLayer for bar
         CAShapeLayer *shadowLayer = [self getMarginPathWith:widthLine];
         
         [self.layer insertSublayer:shadowLayer above:self.layer];

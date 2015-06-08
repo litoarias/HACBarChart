@@ -40,13 +40,14 @@
     _chart.vertical                 = YES;
     _chart.reverse                  = YES;
     _chart.showProgress             = YES;
-    _chart.sizeLabelProgress        = 30;
+    _chart.sizeLabelProgress        = 20;
     _chart.showRealValue            = YES;
     _chart.barMargin                = 0;
     _chart.customText               = YES;
-    _chart.progressTextColor        = [UIColor whiteColor];
-    _chart.backgroundColor          = [UIColor orangeColor];
-    _chart.progressTextFont         = [UIFont fontWithName:@"DINCondensed-Bold" size:10];
+//    _chart.maxValue                 = 1100;
+    _chart.progressTextColor        = [UIColor blackColor];
+    _chart.backgroundColor          = [UIColor colorWithRed:0.80 green:0.80 blue:0.80 alpha:.6];
+    _chart.progressTextFont         = [UIFont fontWithName:@"DINCondensed-Bold" size:12];
     _chart.data = data;
     
 }

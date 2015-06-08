@@ -12,6 +12,7 @@
 #define kHACColor           @"color"
 #define kHACCustomText      @"customText"
 
+
 @interface HACLineChart : UIView
 
 @property (nonatomic) BOOL vertical;
@@ -19,6 +20,7 @@
 @property (nonatomic) BOOL showProgress;
 @property (nonatomic) BOOL showRealValue;
 @property (nonatomic) BOOL customText;
+@property (nonatomic) BOOL showAxis;
 
 @property (nonatomic) int sizeLabelProgress;
 @property (nonatomic) int maxValue;
