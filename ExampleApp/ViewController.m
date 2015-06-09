@@ -22,31 +22,35 @@
     [super viewDidLoad];
     
     data = @[
-             @{kHACPercentage:@1000, kHACColor  : [UIColor colorWithRed:0.000f green:0.620f blue:0.890f alpha:1.00f], kHACCustomText : @"January"},
-             @{kHACPercentage:@900,  kHACColor  : [UIColor colorWithRed:0.431f green:0.000f blue:0.533f alpha:1.00f], kHACCustomText : @"February"},
-             @{kHACPercentage:@800,  kHACColor  : [UIColor colorWithRed:0.922f green:0.000f blue:0.000f alpha:1.00f], kHACCustomText : @"March"},
-             @{kHACPercentage:@700,  kHACColor  : [UIColor colorWithRed:0.000f green:0.671f blue:0.180f alpha:1.00f], kHACCustomText : @"April"},
-             @{kHACPercentage:@600,  kHACColor  : [UIColor colorWithRed:1.000f green:0.000f blue:0.851f alpha:1.00f], kHACCustomText : @"May"},
-             @{kHACPercentage:@500,  kHACColor  : [UIColor colorWithRed:1.000f green:0.808f blue:0.000f alpha:1.00f], kHACCustomText : @"June"},
-             @{kHACPercentage:@400,  kHACColor  : [UIColor colorWithRed:0.294f green:0.843f blue:0.251f alpha:1.00f], kHACCustomText : @"July"},
-             @{kHACPercentage:@300,  kHACColor  : [UIColor colorWithRed:1.000f green:0.404f blue:0.000f alpha:1.00f], kHACCustomText : @"August"},
-             @{kHACPercentage:@200,  kHACColor  : [UIColor colorWithRed:0.282f green:0.631f blue:0.620f alpha:1.00f], kHACCustomText : @"September"},
-             @{kHACPercentage:@100,  kHACColor  : [UIColor colorWithRed:0.776f green:0.000f blue:0.702f alpha:1.00f], kHACCustomText : @"October"},
-             @{kHACPercentage:@50,   kHACColor  : [UIColor colorWithRed:0.282f green:0.631f blue:0.620f alpha:1.00f], kHACCustomText : @"November"},
-             @{kHACPercentage:@25,   kHACColor  : [UIColor colorWithRed:0.776f green:0.000f blue:0.702f alpha:1.00f], kHACCustomText : @"December"}
+             @{kHACPercentage:@1000, kHACColor  : [UIColor colorWithRed:0.000f green:0.620f blue:0.890f alpha:1.0f], kHACCustomText : @"January"},
+             @{kHACPercentage:@900,  kHACColor  : [UIColor colorWithRed:0.431f green:0.000f blue:0.533f alpha:1.0f], kHACCustomText : @"February"},
+             @{kHACPercentage:@800,  kHACColor  : [UIColor colorWithRed:0.922f green:0.000f blue:0.000f alpha:.75f], kHACCustomText : @"March"},
+             @{kHACPercentage:@700,  kHACColor  : [UIColor colorWithRed:0.000f green:0.671f blue:0.180f alpha:.75f], kHACCustomText : @"April"},
+             @{kHACPercentage:@600,  kHACColor  : [UIColor colorWithRed:1.000f green:0.000f blue:0.851f alpha:.75f], kHACCustomText : @"May"},
+             @{kHACPercentage:@500,  kHACColor  : [UIColor colorWithRed:1.000f green:0.808f blue:0.000f alpha:.75f], kHACCustomText : @"June"},
+             @{kHACPercentage:@400,  kHACColor  : [UIColor colorWithRed:0.294f green:0.843f blue:0.251f alpha:.75f], kHACCustomText : @"July"},
+             @{kHACPercentage:@300,  kHACColor  : [UIColor colorWithRed:1.000f green:0.404f blue:0.000f alpha:.75f], kHACCustomText : @"August"},
+             @{kHACPercentage:@200,  kHACColor  : [UIColor colorWithRed:0.282f green:0.631f blue:0.620f alpha:.75f], kHACCustomText : @"September"},
+             @{kHACPercentage:@100,  kHACColor  : [UIColor colorWithRed:0.776f green:0.000f blue:0.702f alpha:.75f], kHACCustomText : @"October"},
+             @{kHACPercentage:@50,   kHACColor  : [UIColor colorWithRed:0.282f green:0.631f blue:0.620f alpha:.75f], kHACCustomText : @"November"},
+             @{kHACPercentage:@25,   kHACColor  : [UIColor colorWithRed:0.776f green:0.000f blue:0.702f alpha:.75f], kHACCustomText : @"December"}
              ];
     
-    ////// CHART
-    _chart.vertical                 = YES;
-    _chart.reverse                  = YES;
-    _chart.showProgress             = YES;
-    _chart.sizeLabelProgress        = 20;
-    _chart.showRealValue            = YES;
-    _chart.barMargin                = 0;
-    _chart.customText               = YES;
-//    _chart.maxValue                 = 1100;
-    _chart.progressTextColor        = [UIColor blackColor];
+    
+    ////// CHART CONFIG
+    _chart.showAxis                   = YES;  // Show axis line
+    _chart.showProgress               = NO;   // Show text for bar
+    _chart.vertical                   = NO;   // Orientation chart
+    _chart.reverse                    = NO;   // Orientation chart
+    _chart.showRealValue              = NO;   // Show value contains _data, or real percent value
+    _chart.customText                 = NO;   // Show custom text, in _data with key kHACCustomText
+    _chart.barMargin                  = 0;    // Margin between bars
+    _chart.sizeLabelProgress          = 40;   // Width of label progress text
+//    _chart.maxValue                 = 1200; // If no define maxValue, get maxium of _data
+    _chart.progressTextColor        = [UIColor darkGrayColor];
+    _chart.axisYTextColor           = [UIColor grayColor];
     _chart.backgroundColor          = [UIColor colorWithRed:0.80 green:0.80 blue:0.80 alpha:.6];
+    _chart.backgroundColor          = [UIColor clearColor];
     _chart.progressTextFont         = [UIFont fontWithName:@"DINCondensed-Bold" size:12];
     _chart.data = data;
     
@@ -67,7 +71,7 @@
 - (IBAction)slideAction:(id)sender {
     UISlider *slide = (UISlider *)sender;
     _chart.barMargin = slide.value;
-    
+    _lblSlide.text = [NSString stringWithFormat:@"Bar margin= %.0f",fabsf(slide.value)];
     if ([timer isValid]) {
         [timer invalidate];
     }
@@ -127,6 +131,16 @@
         _chart.vertical = YES;
     } else {
         _chart.vertical = NO;
+    }
+    [self tapSetData:nil];
+}
+
+- (IBAction)showAxis:(id)sender {
+    UISwitch *mySwitch = (UISwitch *)sender;
+    if ([mySwitch isOn]) {
+        _chart.showAxis = YES;
+    } else {
+        _chart.showAxis = NO;
     }
     [self tapSetData:nil];
 }

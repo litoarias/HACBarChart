@@ -12,6 +12,7 @@
 @interface ViewController : UIViewController
 
 @property (weak, nonatomic) IBOutlet HACLineChart *chart;
+@property (weak, nonatomic) IBOutlet UILabel *lblSlide;
 
 - (IBAction)slideAction:(id)sender;
 - (IBAction)tapClear:(id)sender;
@@ -20,6 +21,7 @@
 - (IBAction)tapShowProgress:(id)sender;
 - (IBAction)tapReverse:(id)sender;
 - (IBAction)tapVertical:(id)sender;
+- (IBAction)showAxis:(id)sender;
 
 @end
 

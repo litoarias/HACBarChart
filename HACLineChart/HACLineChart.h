@@ -27,6 +27,7 @@
 @property (nonatomic) int barMargin;
 
 @property (strong, nonatomic) UIColor *progressTextColor;
+@property (strong, nonatomic) UIColor *axisYTextColor;
 @property (strong, nonatomic) UIFont *progressTextFont;
 
 @property (strong, nonatomic) NSArray *data;
