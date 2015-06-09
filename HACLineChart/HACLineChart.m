@@ -268,41 +268,85 @@ CGFloat const constantMarginAxis = 20.0;
     
     for (i = 0, j = (divider-1); i < divider; i++, j--) {
         
-        // Dot for axis number
-        UIBezierPath *path = [UIBezierPath bezierPath];
-        [path moveToPoint:CGPointMake(marginAxis - 3, (((CGRectGetHeight(self.bounds)-marginAxis)/(divider-1))) * i)];
-        [path addLineToPoint:CGPointMake(marginAxis - 1, (((CGRectGetHeight(self.bounds)-marginAxis)/(divider-1))) * i)];
-        
-        CAShapeLayer *shapeLayer = [CAShapeLayer layer];
-        shapeLayer.path = [path CGPath];
-        shapeLayer.strokeColor = [[UIColor blackColor] CGColor];
-        shapeLayer.lineWidth = 1.0;
-        shapeLayer.fillColor = [[UIColor clearColor] CGColor];
-        
-        [self.layer addSublayer:shapeLayer];
-        if (i != 0 && i!= divider-1) {
-            [self drawDashedLineWithPositionY:(((CGRectGetHeight(self.bounds)-marginAxis)/(divider-1))) * i];
+        if (_vertical) {
+            
+            // Dot for axis number
+            UIBezierPath *path = [UIBezierPath bezierPath];
+            [path moveToPoint:CGPointMake(marginAxis - 3, (((CGRectGetHeight(self.bounds)-marginAxis)/(divider-1))) * i)];
+            [path addLineToPoint:CGPointMake(marginAxis - 1, (((CGRectGetHeight(self.bounds)-marginAxis)/(divider-1))) * i)];
+            
+            CAShapeLayer *shapeLayer = [CAShapeLayer layer];
+            shapeLayer.path = [path CGPath];
+            shapeLayer.strokeColor = [[UIColor blackColor] CGColor];
+            shapeLayer.lineWidth = 1.0;
+            shapeLayer.fillColor = [[UIColor clearColor] CGColor];
+            
+            [self.layer addSublayer:shapeLayer];
+            if (i != 0 && i!= divider-1) {
+                [self drawDashedLineWithPositionY:(((CGRectGetHeight(self.bounds)-marginAxis)/(divider-1))) * i];
+            }
+            // Label for axis number
+            NSString *text;
+            
+            _reverse ? (text = [NSString stringWithFormat:@"%.0f", fabs(ceil(_maxValue / (divider-1))) * i]) : (text = [NSString stringWithFormat:@"%.0f", fabs(ceil(_maxValue / (divider-1))) * j]);
+            
+            CGRect frame;
+            
+            i==(divider-1) ? (frame = CGRectMake(0, CGRectGetHeight(self.bounds)-marginAxis - 15/2, marginAxis - 3, 15)) : (frame = CGRectMake(0, ((CGRectGetHeight(self.bounds)-marginAxis)/(divider-1) * i) - 15 / 2, marginAxis - 3, 15)) ;
+            
+            UILabel *lbl           = [[UILabel alloc]initWithFrame:frame];
+            lbl.text               = text;
+            lbl.font               = _progressTextFont;
+            lbl.backgroundColor    = [UIColor clearColor];
+            lbl.textAlignment      = NSTextAlignmentCenter;
+            lbl.textColor          = _axisYTextColor;
+            lbl.numberOfLines      = 1;
+            [lbl setMinimumScaleFactor:5.0/[UIFont labelFontSize]];
+            lbl.adjustsFontSizeToFitWidth = YES;
+            
+            [self addSubview:lbl];
+            
         }
-        // Label for axis number
-        NSString *text;
-        
-        _reverse ? (text = [NSString stringWithFormat:@"%.0f", fabs(ceil(_maxValue / (divider-1))) * i]) : (text = [NSString stringWithFormat:@"%.0f", fabs(ceil(_maxValue / (divider-1))) * j]);
-        
-        CGRect frame;
-        
-        i==(divider-1) ? (frame = CGRectMake(0, CGRectGetHeight(self.bounds)-marginAxis - 15/2, marginAxis - 3, 15)) : (frame = CGRectMake(0, ((CGRectGetHeight(self.bounds)-marginAxis)/(divider-1) * i) - 15 / 2, marginAxis - 3, 15)) ;
-        
-        UILabel *lbl           = [[UILabel alloc]initWithFrame:frame];
-        lbl.text               = text;
-        lbl.font               = _progressTextFont;
-        lbl.backgroundColor    = [UIColor clearColor];
-        lbl.textAlignment      = NSTextAlignmentCenter;
-        lbl.textColor          = _axisYTextColor;
-        lbl.numberOfLines      = 1;
-        [lbl setMinimumScaleFactor:5.0/[UIFont labelFontSize]];
-        lbl.adjustsFontSizeToFitWidth = YES;
-        
-        [self addSubview:lbl];
+//        else{
+//            
+//            // Dot for axis number
+//            UIBezierPath *path = [UIBezierPath bezierPath];
+//            [path moveToPoint:CGPointMake(marginAxis, CGRectGetHeight(self.bounds)-marginAxis)];
+//            [path addLineToPoint:CGPointMake(marginAxis - 3, (((CGRectGetHeight(self.bounds)-marginAxis)/(divider-1))) * i)];
+//            
+//            CAShapeLayer *shapeLayer = [CAShapeLayer layer];
+//            shapeLayer.path = [path CGPath];
+//            shapeLayer.strokeColor = [[UIColor redColor] CGColor];
+//            shapeLayer.lineWidth = 1.0;
+//            shapeLayer.fillColor = [[UIColor clearColor] CGColor];
+//            
+//            [self.layer addSublayer:shapeLayer];
+//            
+//            if (i != 0 && i != divider-1) {
+//                [self drawDashedLineWithPositionY:(((CGRectGetHeight(self.bounds)-marginAxis)/(divider-1))) * i];
+//            }
+//            
+//            // Label for axis number
+//            NSString *text;
+//            
+//            _reverse ? (text = [NSString stringWithFormat:@"%.0f", fabs(ceil(_maxValue / (divider-1))) * i]) : (text = [NSString stringWithFormat:@"%.0f", fabs(ceil(_maxValue / (divider-1))) * j]);
+//            
+//            CGRect frame;
+//            
+//            i==(divider-1) ? (frame = CGRectMake(0, CGRectGetHeight(self.bounds)-marginAxis - 15/2, marginAxis - 3, 15)) : (frame = CGRectMake(0, ((CGRectGetHeight(self.bounds)-marginAxis)/(divider-1) * i) - 15 / 2, marginAxis - 3, 15)) ;
+//            
+//            UILabel *lbl           = [[UILabel alloc]initWithFrame:frame];
+//            lbl.text               = text;
+//            lbl.font               = _progressTextFont;
+//            lbl.backgroundColor    = [UIColor clearColor];
+//            lbl.textAlignment      = NSTextAlignmentCenter;
+//            lbl.textColor          = _axisYTextColor;
+//            lbl.numberOfLines      = 1;
+//            [lbl setMinimumScaleFactor:5.0/[UIFont labelFontSize]];
+//            lbl.adjustsFontSizeToFitWidth = YES;
+//            
+//            [self addSubview:lbl];
+//        }
     }
 }
 

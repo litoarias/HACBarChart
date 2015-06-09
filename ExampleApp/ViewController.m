@@ -39,11 +39,11 @@
     
     ////// CHART CONFIG
     _chart.showAxis                   = YES;  // Show axis line
-    _chart.showProgress               = NO;   // Show text for bar
-    _chart.vertical                   = NO;   // Orientation chart
-    _chart.reverse                    = NO;   // Orientation chart
-    _chart.showRealValue              = NO;   // Show value contains _data, or real percent value
-    _chart.customText                 = NO;   // Show custom text, in _data with key kHACCustomText
+    _chart.showProgress               = YES;   // Show text for bar
+    _chart.vertical                   = YES;   // Orientation chart
+    _chart.reverse                    = YES;   // Orientation chart
+    _chart.showRealValue              = YES;   // Show value contains _data, or real percent value
+    _chart.customText                 = YES;   // Show custom text, in _data with key kHACCustomText
     _chart.barMargin                  = 0;    // Margin between bars
     _chart.sizeLabelProgress          = 40;   // Width of label progress text
 //    _chart.maxValue                 = 1200; // If no define maxValue, get maxium of _data
