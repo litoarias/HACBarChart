@@ -74,7 +74,7 @@ CGFloat const constantMarginAxis = 20.0;
 
 -(CGFloat)getMaxiumProgress{
     CGFloat progress100 = _vertical ? CGRectGetHeight(self.bounds) : CGRectGetWidth(self.bounds);
-    return _showProgress ? progress100 - _sizeLabelProgress : progress100;
+    return _showProgress ? progress100 /*- _sizeLabelProgress*/ : progress100;
 }
 
 -(CGFloat)getMaxiumProgressWithAxisAndLastMaxiumProgress:(CGFloat)progress100{
@@ -405,6 +405,10 @@ CGFloat const constantMarginAxis = 20.0;
         
         // Obtain progress size
         progress = (value * progress100) / maxVal;
+        
+        if (i==6) {
+            NSLog(@"%f",progress);
+        }
         
         // Get real Progress
         int realPercent = (progress*100)/progress100;
