@@ -13,7 +13,7 @@
 #define kHACCustomText      @"customText"
 
 
-@interface HACLineChart : UIView
+@interface HACBarChart : UIView
 
 @property (nonatomic) BOOL vertical;
 @property (nonatomic) BOOL reverse;

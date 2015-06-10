@@ -7,11 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "HACLineChart.h"
+#import "HACBarChart.h"
 
 @interface ViewController : UIViewController
 
-@property (weak, nonatomic) IBOutlet HACLineChart *chart;
+@property (weak, nonatomic) IBOutlet HACBarChart *chart;
 @property (weak, nonatomic) IBOutlet UILabel *lblSlide;
 
 - (IBAction)slideAction:(id)sender;

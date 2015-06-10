@@ -11,7 +11,7 @@
 		E311958C1B2208E500B658E2 /* Screencast.gif in Resources */ = {isa = PBXBuildFile; fileRef = E311958B1B2208E500B658E2 /* Screencast.gif */; };
 		E312493F1B1F949D003691C4 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E312493E1B1F949D003691C4 /* ViewController.m */; };
 		E31249411B1F94DC003691C4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E31249401B1F94DC003691C4 /* main.m */; };
-		E31249431B1F94EF003691C4 /* HACLineChart.m in Sources */ = {isa = PBXBuildFile; fileRef = E31249421B1F94EF003691C4 /* HACLineChart.m */; };
+		E31249431B1F94EF003691C4 /* HACBarChart.m in Sources */ = {isa = PBXBuildFile; fileRef = E31249421B1F94EF003691C4 /* HACBarChart.m */; };
 		E31249461B1F9503003691C4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E31249451B1F9503003691C4 /* AppDelegate.m */; };
 		E312494C1B1F9539003691C4 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = E31249481B1F9539003691C4 /* LaunchScreen.xib */; };
 		E312494D1B1F9539003691C4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E312494A1B1F9539003691C4 /* Main.storyboard */; };
@@ -38,10 +38,10 @@
 		E311958B1B2208E500B658E2 /* Screencast.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = Screencast.gif; sourceTree = SOURCE_ROOT; };
 		E312493E1B1F949D003691C4 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ViewController.m; path = ExampleApp/ViewController.m; sourceTree = SOURCE_ROOT; };
 		E31249401B1F94DC003691C4 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = ExampleApp/main.m; sourceTree = SOURCE_ROOT; };
-		E31249421B1F94EF003691C4 /* HACLineChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HACLineChart.m; path = HACLineChart/HACLineChart.m; sourceTree = SOURCE_ROOT; };
+		E31249421B1F94EF003691C4 /* HACBarChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HACBarChart.m; path = HACLineChart/HACBarChart.m; sourceTree = SOURCE_ROOT; };
 		E31249441B1F9503003691C4 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = ExampleApp/AppDelegate.h; sourceTree = SOURCE_ROOT; };
 		E31249451B1F9503003691C4 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = ExampleApp/AppDelegate.m; sourceTree = SOURCE_ROOT; };
-		E31249471B1F951D003691C4 /* HACLineChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HACLineChart.h; path = HACLineChart/HACLineChart.h; sourceTree = SOURCE_ROOT; };
+		E31249471B1F951D003691C4 /* HACBarChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HACBarChart.h; path = HACLineChart/HACBarChart.h; sourceTree = SOURCE_ROOT; };
 		E31249491B1F9539003691C4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = ExampleApp/Base.lproj/LaunchScreen.xib; sourceTree = SOURCE_ROOT; };
 		E312494B1B1F9539003691C4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = ExampleApp/Base.lproj/Main.storyboard; sourceTree = SOURCE_ROOT; };
 		E312494E1B1F954C003691C4 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = ExampleApp/Images.xcassets; sourceTree = SOURCE_ROOT; };
@@ -141,8 +141,8 @@
 		E3E0ECD31B1DC1DF006F9724 /* HACLBarChart */ = {
 			isa = PBXGroup;
 			children = (
-				E31249471B1F951D003691C4 /* HACLineChart.h */,
-				E31249421B1F94EF003691C4 /* HACLineChart.m */,
+				E31249471B1F951D003691C4 /* HACBarChart.h */,
+				E31249421B1F94EF003691C4 /* HACBarChart.m */,
 			);
 			name = HACLBarChart;
 			path = HACLineChart;
@@ -254,7 +254,7 @@
 				E31249461B1F9503003691C4 /* AppDelegate.m in Sources */,
 				E31249411B1F94DC003691C4 /* main.m in Sources */,
 				E312493F1B1F949D003691C4 /* ViewController.m in Sources */,
-				E31249431B1F94EF003691C4 /* HACLineChart.m in Sources */,
+				E31249431B1F94EF003691C4 /* HACBarChart.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

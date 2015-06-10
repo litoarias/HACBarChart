@@ -6,9 +6,9 @@
 //  Copyright (c) 2015 Hipolito Arias. All rights reserved.
 //
 
-#import "HACLineChart.h"
+#import "HACBarChart.h"
 
-@implementation HACLineChart
+@implementation HACBarChart
 
 CGFloat marginAxis = 0.0;
 CGFloat const constantMarginAxis = 20.0;
@@ -74,11 +74,11 @@ CGFloat const constantMarginAxis = 20.0;
 
 -(CGFloat)getMaxiumProgress{
     CGFloat progress100 = _vertical ? CGRectGetHeight(self.bounds) : CGRectGetWidth(self.bounds);
-    return _showProgress ? progress100 /*- _sizeLabelProgress*/ : progress100;
+    return _showProgress ? progress100 - _sizeLabelProgress : progress100;
 }
 
 -(CGFloat)getMaxiumProgressWithAxisAndLastMaxiumProgress:(CGFloat)progress100{
-    return progress100 - marginAxis;
+    return progress100 /*- marginAxis*/;
 }
 
 -(void)checkWidthBarPossibleWithWidthBar:(CGFloat)width{
@@ -132,12 +132,22 @@ CGFloat const constantMarginAxis = 20.0;
     }else{
         if (_reverse) {
             ////// VERTICAL RIGTH TO LEFT
-            [pathBar moveToPoint:CGPointMake(CGRectGetWidth(self.bounds), positionX - marginAxis)];
-            [pathBar addLineToPoint:CGPointMake(CGRectGetWidth(self.bounds) - progress, positionX - marginAxis)];
+            if (_showAxis) {
+                [pathBar moveToPoint:CGPointMake(CGRectGetWidth(self.bounds), positionX - marginAxis)];
+                [pathBar addLineToPoint:CGPointMake(CGRectGetWidth(self.bounds) - progress, positionX - marginAxis)];
+            }else{
+                [pathBar moveToPoint:CGPointMake(CGRectGetWidth(self.bounds), positionX - marginAxis)];
+                [pathBar addLineToPoint:CGPointMake(CGRectGetWidth(self.bounds) - progress, positionX + marginAxis)];
+            }
         }else{
             ////// HORIZONTAL LEFT TO RIGHT
-            [pathBar moveToPoint:CGPointMake(marginAxis, positionX - marginAxis)];
-            [pathBar addLineToPoint:CGPointMake(progress + marginAxis, positionX - marginAxis)];
+            if (_showAxis) {
+                [pathBar moveToPoint:CGPointMake(marginAxis, positionX - marginAxis)];
+                [pathBar addLineToPoint:CGPointMake(progress + marginAxis, positionX - marginAxis)];
+            }else{
+                [pathBar moveToPoint:CGPointMake(marginAxis, positionX - marginAxis)];
+                [pathBar addLineToPoint:CGPointMake(progress + marginAxis, positionX - marginAxis)];
+            }
         }
     }
     return pathBar;
@@ -157,11 +167,11 @@ CGFloat const constantMarginAxis = 20.0;
 # pragma mark - UILabel Methods
 
 -(CGRect)getFrameLabelWith:(CGFloat)witdthBar index:(int)index progress:(CGFloat)progress{
-    //    if (_showAxis) {
-    //        return !_vertical ? CGRectMake(marginAxis, (witdthBar * index) - witdthBar, _sizeLabelProgress, witdthBar) : CGRectMake((witdthBar * index) - witdthBar + marginAxis, progress, witdthBar, _sizeLabelProgress);
-    //    }else{
-    return !_vertical ? CGRectMake(marginAxis, (witdthBar * index) - witdthBar, _sizeLabelProgress, witdthBar) : CGRectMake((witdthBar * index) - witdthBar + marginAxis, progress, witdthBar, _sizeLabelProgress);
-    //    }
+    if (_showAxis) {
+        return !_vertical ? CGRectMake(marginAxis, (witdthBar * index) - witdthBar, _sizeLabelProgress, witdthBar) : CGRectMake((witdthBar * index) - witdthBar + marginAxis, progress, witdthBar, _sizeLabelProgress);
+    }else{
+        return !_vertical ? CGRectMake(marginAxis, (witdthBar * index) - witdthBar, _sizeLabelProgress, witdthBar) : CGRectMake((witdthBar * index) - witdthBar + marginAxis, progress, witdthBar, _sizeLabelProgress);
+    }
 }
 
 -(NSString*)getTextWithIndex:(int)index realPercent:(int)realPercent value:(CGFloat)value{
@@ -174,16 +184,19 @@ CGFloat const constantMarginAxis = 20.0;
     return text;
 }
 
--(UILabel *) setLabelWithFrame:(CGRect)frame text:(NSString*)text{
+-(UILabel *) setLabelWithFrame:(CGRect)frame text:(NSString*)text barColor:(UIColor *)barColor{
     UILabel *progressText           = [[UILabel alloc]initWithFrame:frame];
     progressText.text               = text;
     progressText.font               = _progressTextFont;
-    progressText.backgroundColor    = [UIColor clearColor];
+    progressText.backgroundColor    = [barColor colorWithAlphaComponent:.3];
     _vertical ? (progressText.textAlignment = NSTextAlignmentCenter) : (progressText.textAlignment = NSTextAlignmentCenter);
     progressText.textColor          = _progressTextColor;
     progressText.numberOfLines      = 1;
+    progressText.layer.borderWidth  = 1;
+    progressText.layer.borderColor  = barColor.CGColor;
     [progressText setMinimumScaleFactor:5.0/[UIFont labelFontSize]];
     progressText.adjustsFontSizeToFitWidth = YES;
+    progressText.layer.masksToBounds = YES;
     
     return progressText;
 }
@@ -197,7 +210,8 @@ CGFloat const constantMarginAxis = 20.0;
         if (_reverse) {
             ////// VERTICAL TOP TO BOTTOM
             animationLabel.fromValue  = [NSNumber numberWithFloat:_sizeLabelProgress / 2];
-            animationLabel.toValue = @(progress+_sizeLabelProgress / 2);
+            animationLabel.toValue = @(progress+(_sizeLabelProgress/2));
+            
         }else{
             ////// VERTICAL BOTTOM TO TOP
             animationLabel.fromValue  = [NSNumber numberWithFloat:(CGRectGetHeight(self.bounds) - _sizeLabelProgress / 2) - marginAxis];
@@ -206,12 +220,22 @@ CGFloat const constantMarginAxis = 20.0;
     }else{
         if (_reverse) {
             ////// HORIZONTAL RIGTH TO LEFT
-            animationLabel.fromValue  = [NSNumber numberWithFloat:CGRectGetWidth(self.bounds)-_sizeLabelProgress / 2];
-            animationLabel.toValue = @(CGRectGetWidth(self.bounds)-progress - _sizeLabelProgress / 2);
+            if (_showAxis) {
+                animationLabel.fromValue  = [NSNumber numberWithFloat:CGRectGetWidth(self.bounds)-_sizeLabelProgress / 2];
+                animationLabel.toValue = @(CGRectGetWidth(self.bounds)-progress - _sizeLabelProgress / 2);
+            }else{
+                animationLabel.fromValue  = [NSNumber numberWithFloat:CGRectGetWidth(self.bounds)-_sizeLabelProgress / 2];
+                animationLabel.toValue = @(CGRectGetWidth(self.bounds)-progress - _sizeLabelProgress / 2);
+            }
         }else{
             ////// HORIZONTAL LEFT TO RIGHT
-            animationLabel.fromValue  = [NSNumber numberWithFloat:(_sizeLabelProgress / 2) + marginAxis];
-            animationLabel.toValue = @((progress + _sizeLabelProgress / 2)+marginAxis);
+            if (_showAxis) {
+                animationLabel.fromValue  = [NSNumber numberWithFloat:(_sizeLabelProgress + marginAxis / 2)];
+                animationLabel.toValue = @((progress + _sizeLabelProgress + marginAxis / 2));
+            }else{
+                animationLabel.fromValue  = [NSNumber numberWithFloat:(_sizeLabelProgress / 2) + marginAxis];
+                animationLabel.toValue = @((progress + _sizeLabelProgress / 2) + marginAxis);
+            }
         }
     }
     
@@ -232,9 +256,16 @@ CGFloat const constantMarginAxis = 20.0;
 
 -(void)setupHorizontalAxisX{
     
+    
     UIBezierPath *path = [UIBezierPath bezierPath];
-    [path moveToPoint:CGPointMake(marginAxis-1, CGRectGetHeight(self.bounds) - marginAxis + 1)];
-    [path addLineToPoint:CGPointMake(CGRectGetWidth(self.bounds), CGRectGetHeight(self.bounds) - marginAxis +1)];
+    
+//    if (_vertical) {
+        [path moveToPoint:CGPointMake(marginAxis-1, CGRectGetHeight(self.bounds) - marginAxis + 1)];
+        [path addLineToPoint:CGPointMake(CGRectGetWidth(self.bounds), CGRectGetHeight(self.bounds) - marginAxis +1)];
+//    }else{
+//        [path moveToPoint:CGPointMake(0.0, CGRectGetHeight(self.bounds) - marginAxis + 1)];
+//        [path addLineToPoint:CGPointMake(CGRectGetWidth(self.bounds)- marginAxis + 1, CGRectGetHeight(self.bounds) - marginAxis +1)];
+//    }
     
     CAShapeLayer *shapeLayer = [CAShapeLayer layer];
     shapeLayer.path = [path CGPath];
@@ -248,8 +279,13 @@ CGFloat const constantMarginAxis = 20.0;
 -(void)setupVerticalAxisY{
     
     UIBezierPath *path = [UIBezierPath bezierPath];
-    [path moveToPoint:CGPointMake(marginAxis - 1, 0.0)];
-    [path addLineToPoint:CGPointMake(marginAxis - 1, CGRectGetHeight(self.bounds) - marginAxis + 1)];
+//    if (_vertical) {
+        [path moveToPoint:CGPointMake(marginAxis - 1, 0.0)];
+        [path addLineToPoint:CGPointMake(marginAxis - 1, CGRectGetHeight(self.bounds) - marginAxis + 1)];
+//    }else{
+//        [path moveToPoint:CGPointMake(CGRectGetWidth(self.bounds) - marginAxis + 1, 0.0)];
+//        [path addLineToPoint:CGPointMake(CGRectGetWidth(self.bounds) - marginAxis + 1, CGRectGetHeight(self.bounds) - marginAxis + 1)];
+//    }
     
     CAShapeLayer *shapeLayer = [CAShapeLayer layer];
     shapeLayer.path = [path CGPath];
@@ -307,46 +343,47 @@ CGFloat const constantMarginAxis = 20.0;
             [self addSubview:lbl];
             
         }
-//        else{
-//            
-//            // Dot for axis number
-//            UIBezierPath *path = [UIBezierPath bezierPath];
-//            [path moveToPoint:CGPointMake(marginAxis, CGRectGetHeight(self.bounds)-marginAxis)];
-//            [path addLineToPoint:CGPointMake(marginAxis - 3, (((CGRectGetHeight(self.bounds)-marginAxis)/(divider-1))) * i)];
-//            
-//            CAShapeLayer *shapeLayer = [CAShapeLayer layer];
-//            shapeLayer.path = [path CGPath];
-//            shapeLayer.strokeColor = [[UIColor redColor] CGColor];
-//            shapeLayer.lineWidth = 1.0;
-//            shapeLayer.fillColor = [[UIColor clearColor] CGColor];
-//            
-//            [self.layer addSublayer:shapeLayer];
-//            
-//            if (i != 0 && i != divider-1) {
-//                [self drawDashedLineWithPositionY:(((CGRectGetHeight(self.bounds)-marginAxis)/(divider-1))) * i];
-//            }
-//            
-//            // Label for axis number
-//            NSString *text;
-//            
-//            _reverse ? (text = [NSString stringWithFormat:@"%.0f", fabs(ceil(_maxValue / (divider-1))) * i]) : (text = [NSString stringWithFormat:@"%.0f", fabs(ceil(_maxValue / (divider-1))) * j]);
-//            
-//            CGRect frame;
-//            
-//            i==(divider-1) ? (frame = CGRectMake(0, CGRectGetHeight(self.bounds)-marginAxis - 15/2, marginAxis - 3, 15)) : (frame = CGRectMake(0, ((CGRectGetHeight(self.bounds)-marginAxis)/(divider-1) * i) - 15 / 2, marginAxis - 3, 15)) ;
-//            
-//            UILabel *lbl           = [[UILabel alloc]initWithFrame:frame];
-//            lbl.text               = text;
-//            lbl.font               = _progressTextFont;
-//            lbl.backgroundColor    = [UIColor clearColor];
-//            lbl.textAlignment      = NSTextAlignmentCenter;
-//            lbl.textColor          = _axisYTextColor;
-//            lbl.numberOfLines      = 1;
-//            [lbl setMinimumScaleFactor:5.0/[UIFont labelFontSize]];
-//            lbl.adjustsFontSizeToFitWidth = YES;
-//            
-//            [self addSubview:lbl];
-//        }
+        else{
+            
+            // Dot for axis number
+            UIBezierPath *path = [UIBezierPath bezierPath];
+            [path moveToPoint:CGPointMake(((((CGRectGetWidth(self.bounds)-marginAxis)/(divider-1))) * i)+marginAxis, CGRectGetHeight(self.bounds) - (marginAxis-1
+                                                                                                                                        ))];
+            [path addLineToPoint:CGPointMake(((((CGRectGetWidth(self.bounds)-marginAxis)/(divider-1))) * i)+marginAxis, CGRectGetHeight(self.bounds) - (marginAxis-5
+                                                                                                                                           ))];
+            
+            CAShapeLayer *shapeLayer = [CAShapeLayer layer];
+            shapeLayer.path = [path CGPath];
+            shapeLayer.strokeColor = [[UIColor redColor] CGColor];
+            shapeLayer.lineWidth = 1.0;
+            shapeLayer.fillColor = [[UIColor clearColor] CGColor];
+            
+            [self.layer addSublayer:shapeLayer];
+            if (i != 0 && i!= divider-1) {
+                [self drawDashedLineWithPositionY:(((CGRectGetHeight(self.bounds)-marginAxis)/(divider-1))) * i];
+            }
+            // Label for axis number
+            NSString *text;
+            
+            _reverse ? (text = [NSString stringWithFormat:@"%.0f", fabs(ceil(_maxValue / (divider-1))) * i]) : (text = [NSString stringWithFormat:@"%.0f", fabs(ceil(_maxValue / (divider-1))) * j]);
+            
+            CGRect frame;
+            
+            i==(divider-1) ? (frame = CGRectMake(0, CGRectGetHeight(self.bounds)-marginAxis - 15/2, marginAxis - 3, 15)) : (frame = CGRectMake(0, ((CGRectGetHeight(self.bounds)-marginAxis)/(divider-1) * i) - 15 / 2, marginAxis - 3, 15)) ;
+            
+            UILabel *lbl           = [[UILabel alloc]initWithFrame:frame];
+            lbl.text               = text;
+            lbl.font               = _progressTextFont;
+            lbl.backgroundColor    = [UIColor clearColor];
+            lbl.textAlignment      = NSTextAlignmentCenter;
+            lbl.textColor          = _axisYTextColor;
+            lbl.numberOfLines      = 1;
+            [lbl setMinimumScaleFactor:5.0/[UIFont labelFontSize]];
+            lbl.adjustsFontSizeToFitWidth = YES;
+            
+            [self addSubview:lbl];
+
+        }
     }
 }
 
@@ -406,19 +443,20 @@ CGFloat const constantMarginAxis = 20.0;
         // Obtain progress size
         progress = (value * progress100) / maxVal;
         
-        if (i==6) {
-            NSLog(@"%f",progress);
-        }
-        
         // Get real Progress
         int realPercent = (progress*100)/progress100;
+        
+        _showAxis ? progress -= _sizeLabelProgress : progress;
+        
         
         // Posicion X de cada línea (separación entre ellas)
         CGFloat positionX = _showAxis ? ((widthLine * (i - 1)) + (widthLine / 2) + marginAxis) : ((widthLine * (i - 1)) + (widthLine / 2));
         
         
         UIColor *barColor = [self getBarColorWithIndex:i];
-        //        UIColor *barColor=[UIColor clearColor];
+        
+        
+//        barColor=[UIColor clearColor];
         
         // CAShapeLayer for bar
         CAShapeLayer *shadowLayer = [self getMarginPathWith:widthLine];
@@ -442,7 +480,8 @@ CGFloat const constantMarginAxis = 20.0;
         ////// LABEL
         // CreaTe Laber progress
         UILabel *progressText = [self setLabelWithFrame:[self getFrameLabelWith:widthLine index:i progress:progress]
-                                                   text:[self getTextWithIndex:i realPercent:realPercent value:value]];
+                                                   text:[self getTextWithIndex:i realPercent:realPercent value:value]
+                                               barColor:barColor];
         
         // Show progress ?
         _showProgress ? [self addSubview:progressText] : _showProgress;
