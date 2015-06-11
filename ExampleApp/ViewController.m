@@ -33,7 +33,7 @@
              @{kHACPercentage:@500,  kHACColor  : [UIColor colorWithRed:0.282f green:0.631f blue:0.620f alpha:1.0f], kHACCustomText : @"September"},
              @{kHACPercentage:@375,  kHACColor  : [UIColor colorWithRed:0.776f green:0.000f blue:0.702f alpha:1.0f], kHACCustomText : @"October"},
              @{kHACPercentage:@250,  kHACColor  : [UIColor colorWithRed:0.282f green:0.631f blue:0.620f alpha:1.0f], kHACCustomText : @"November"},
-             @{kHACPercentage:@-125,  kHACColor  : [UIColor colorWithRed:0.776f green:0.000f blue:0.702f alpha:1.0f], kHACCustomText : @"December"}
+             @{kHACPercentage:@125,  kHACColor  : [UIColor colorWithRed:0.776f green:0.000f blue:0.702f alpha:1.0f], kHACCustomText : @"December"}
              ];
     
     
@@ -45,7 +45,7 @@
     _chart.showRealValue              = YES;   // Show value contains _data, or real percent value
     _chart.customText                 = YES;   // Show custom text, in _data with key kHACCustomText
     _chart.barMargin                  = 0;     // Margin between bars
-    _chart.sizeLabelProgress          = 15;    // Width of label progress text
+    _chart.sizeLabelProgress          = 25;    // Width of label progress text
 //    _chart.maxValue                 = 1200;  // If no define maxValue, get maxium of _data
     _chart.progressTextColor        = [UIColor darkGrayColor];
     _chart.axisYTextColor           = [UIColor grayColor];

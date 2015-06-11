@@ -221,7 +221,7 @@ CGFloat const constantMarginAxis = 20.0;
         }else{
             ////// VERTICAL BOTTOM TO TOP
             animationLabel.fromValue  = [NSNumber numberWithFloat:(CGRectGetHeight(self.bounds) - _sizeLabelProgress / 2) - marginAxis];
-            animationLabel.toValue = @(((CGRectGetHeight(self.bounds)-progress) - _sizeLabelProgress / 2) - marginAxis);
+            animationLabel.toValue = @(((CGRectGetHeight(self.bounds) - progress) - _sizeLabelProgress / 2) - marginAxis);
         }
     }else{
         if (_reverse) {
@@ -231,13 +231,13 @@ CGFloat const constantMarginAxis = 20.0;
                 animationLabel.toValue = @(CGRectGetWidth(self.bounds) - progress - _sizeLabelProgress / 2);
             }else{
                 animationLabel.fromValue  = [NSNumber numberWithFloat:CGRectGetWidth(self.bounds)-_sizeLabelProgress / 2];
-                animationLabel.toValue = @(CGRectGetWidth(self.bounds)-progress - _sizeLabelProgress / 2);
+                animationLabel.toValue = @(CGRectGetWidth(self.bounds) - progress - _sizeLabelProgress / 2);
             }
         }else{
             ////// HORIZONTAL LEFT TO RIGHT
             if (_showAxis) {
-                animationLabel.fromValue  = [NSNumber numberWithFloat:(_sizeLabelProgress + marginAxis / 2)];
-                animationLabel.toValue = @((progress + _sizeLabelProgress + marginAxis / 2 + /*ÑAPA*/2/*ÑAPA*/));
+                animationLabel.fromValue  = [NSNumber numberWithFloat:(_sizeLabelProgress + (marginAxis / 2) - 3)];
+                animationLabel.toValue = @(progress + _sizeLabelProgress + (marginAxis / 2)/*ÑAPA*/-3/*ÑAPA*/);
             }else{
                 animationLabel.fromValue  = [NSNumber numberWithFloat:(_sizeLabelProgress / 2) + marginAxis];
                 animationLabel.toValue = @((progress + _sizeLabelProgress / 2) + marginAxis);
@@ -254,11 +254,6 @@ CGFloat const constantMarginAxis = 20.0;
 
 # pragma mark - Axis Bar
 
-
--(int)roundAxisMaxValue{
-    return (int)ceil(234.0);
-    
-}
 
 -(void)setupHorizontalAxisX{
     
