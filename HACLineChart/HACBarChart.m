@@ -74,11 +74,11 @@ CGFloat const constantMarginAxis = 20.0;
 
 -(CGFloat)getMaxiumProgress{
     CGFloat progress100 = _vertical ? CGRectGetHeight(self.bounds) : CGRectGetWidth(self.bounds);
-    return _showProgress ? progress100 - _sizeLabelProgress : progress100;
+    return _showProgress ? progress100  : progress100;
 }
 
 -(CGFloat)getMaxiumProgressWithAxisAndLastMaxiumProgress:(CGFloat)progress100{
-    return progress100 /*- marginAxis*/;
+    return _showAxis ? progress100 - marginAxis : progress100;
 }
 
 -(void)checkWidthBarPossibleWithWidthBar:(CGFloat)width{
@@ -168,9 +168,15 @@ CGFloat const constantMarginAxis = 20.0;
 
 -(CGRect)getFrameLabelWith:(CGFloat)witdthBar index:(int)index progress:(CGFloat)progress{
     if (_showAxis) {
-        return !_vertical ? CGRectMake(marginAxis, (witdthBar * index) - witdthBar, _sizeLabelProgress, witdthBar) : CGRectMake((witdthBar * index) - witdthBar + marginAxis, progress, witdthBar, _sizeLabelProgress);
+        return _vertical ?
+        CGRectMake((witdthBar * index) - witdthBar + marginAxis, progress, witdthBar, _sizeLabelProgress)
+        :
+        CGRectMake(marginAxis, (witdthBar * index) - witdthBar, _sizeLabelProgress, witdthBar);
     }else{
-        return !_vertical ? CGRectMake(marginAxis, (witdthBar * index) - witdthBar, _sizeLabelProgress, witdthBar) : CGRectMake((witdthBar * index) - witdthBar + marginAxis, progress, witdthBar, _sizeLabelProgress);
+        return _vertical ?
+        CGRectMake((witdthBar * index) - witdthBar, progress, witdthBar, _sizeLabelProgress)
+        :
+        CGRectMake(0.0, (witdthBar * index) - witdthBar, _sizeLabelProgress, witdthBar);
     }
 }
 
@@ -222,7 +228,7 @@ CGFloat const constantMarginAxis = 20.0;
             ////// HORIZONTAL RIGTH TO LEFT
             if (_showAxis) {
                 animationLabel.fromValue  = [NSNumber numberWithFloat:CGRectGetWidth(self.bounds)-_sizeLabelProgress / 2];
-                animationLabel.toValue = @(CGRectGetWidth(self.bounds)-progress - _sizeLabelProgress / 2);
+                animationLabel.toValue = @(CGRectGetWidth(self.bounds) - progress - _sizeLabelProgress / 2);
             }else{
                 animationLabel.fromValue  = [NSNumber numberWithFloat:CGRectGetWidth(self.bounds)-_sizeLabelProgress / 2];
                 animationLabel.toValue = @(CGRectGetWidth(self.bounds)-progress - _sizeLabelProgress / 2);
@@ -231,7 +237,7 @@ CGFloat const constantMarginAxis = 20.0;
             ////// HORIZONTAL LEFT TO RIGHT
             if (_showAxis) {
                 animationLabel.fromValue  = [NSNumber numberWithFloat:(_sizeLabelProgress + marginAxis / 2)];
-                animationLabel.toValue = @((progress + _sizeLabelProgress + marginAxis / 2));
+                animationLabel.toValue = @((progress + _sizeLabelProgress + marginAxis / 2 + /*ÑAPA*/2/*ÑAPA*/));
             }else{
                 animationLabel.fromValue  = [NSNumber numberWithFloat:(_sizeLabelProgress / 2) + marginAxis];
                 animationLabel.toValue = @((progress + _sizeLabelProgress / 2) + marginAxis);
@@ -260,8 +266,8 @@ CGFloat const constantMarginAxis = 20.0;
     UIBezierPath *path = [UIBezierPath bezierPath];
     
 //    if (_vertical) {
-        [path moveToPoint:CGPointMake(marginAxis-1, CGRectGetHeight(self.bounds) - marginAxis + 1)];
-        [path addLineToPoint:CGPointMake(CGRectGetWidth(self.bounds), CGRectGetHeight(self.bounds) - marginAxis +1)];
+        [path moveToPoint:CGPointMake(marginAxis/*-1*/, CGRectGetHeight(self.bounds) - marginAxis /*+ 1*/)];
+        [path addLineToPoint:CGPointMake(CGRectGetWidth(self.bounds), CGRectGetHeight(self.bounds) - marginAxis /*+1*/)];
 //    }else{
 //        [path moveToPoint:CGPointMake(0.0, CGRectGetHeight(self.bounds) - marginAxis + 1)];
 //        [path addLineToPoint:CGPointMake(CGRectGetWidth(self.bounds)- marginAxis + 1, CGRectGetHeight(self.bounds) - marginAxis +1)];
@@ -280,8 +286,8 @@ CGFloat const constantMarginAxis = 20.0;
     
     UIBezierPath *path = [UIBezierPath bezierPath];
 //    if (_vertical) {
-        [path moveToPoint:CGPointMake(marginAxis - 1, 0.0)];
-        [path addLineToPoint:CGPointMake(marginAxis - 1, CGRectGetHeight(self.bounds) - marginAxis + 1)];
+        [path moveToPoint:CGPointMake(marginAxis /*- 1*/, 0.0)];
+        [path addLineToPoint:CGPointMake(marginAxis /*- 1*/, CGRectGetHeight(self.bounds) - marginAxis /*+ 1*/)];
 //    }else{
 //        [path moveToPoint:CGPointMake(CGRectGetWidth(self.bounds) - marginAxis + 1, 0.0)];
 //        [path addLineToPoint:CGPointMake(CGRectGetWidth(self.bounds) - marginAxis + 1, CGRectGetHeight(self.bounds) - marginAxis + 1)];
@@ -309,7 +315,7 @@ CGFloat const constantMarginAxis = 20.0;
             // Dot for axis number
             UIBezierPath *path = [UIBezierPath bezierPath];
             [path moveToPoint:CGPointMake(marginAxis - 3, (((CGRectGetHeight(self.bounds)-marginAxis)/(divider-1))) * i)];
-            [path addLineToPoint:CGPointMake(marginAxis - 1, (((CGRectGetHeight(self.bounds)-marginAxis)/(divider-1))) * i)];
+            [path addLineToPoint:CGPointMake(marginAxis, (((CGRectGetHeight(self.bounds)-marginAxis)/(divider-1))) * i)];
             
             CAShapeLayer *shapeLayer = [CAShapeLayer layer];
             shapeLayer.path = [path CGPath];
@@ -347,10 +353,8 @@ CGFloat const constantMarginAxis = 20.0;
             
             // Dot for axis number
             UIBezierPath *path = [UIBezierPath bezierPath];
-            [path moveToPoint:CGPointMake(((((CGRectGetWidth(self.bounds)-marginAxis)/(divider-1))) * i)+marginAxis, CGRectGetHeight(self.bounds) - (marginAxis-1
-                                                                                                                                        ))];
-            [path addLineToPoint:CGPointMake(((((CGRectGetWidth(self.bounds)-marginAxis)/(divider-1))) * i)+marginAxis, CGRectGetHeight(self.bounds) - (marginAxis-5
-                                                                                                                                           ))];
+            [path moveToPoint:CGPointMake(((((CGRectGetWidth(self.bounds)-marginAxis)/(divider-1))) * i)+marginAxis, CGRectGetHeight(self.bounds) - (marginAxis-1 ))];
+            [path addLineToPoint:CGPointMake(((((CGRectGetWidth(self.bounds)-marginAxis)/(divider-1))) * i)+marginAxis, CGRectGetHeight(self.bounds) - (marginAxis-5))];
             
             CAShapeLayer *shapeLayer = [CAShapeLayer layer];
             shapeLayer.path = [path CGPath];
@@ -446,16 +450,22 @@ CGFloat const constantMarginAxis = 20.0;
         // Get real Progress
         int realPercent = (progress*100)/progress100;
         
-        _showAxis ? progress -= _sizeLabelProgress : progress;
+        _showProgress ? (progress -= _sizeLabelProgress) : progress;
         
+        
+        BOOL minusProgres=NO;
+        
+        if (progress<0 && _showProgress==YES) {
+            (progress += _sizeLabelProgress);
+            _showProgress=NO;
+            minusProgres=YES;
+        }
         
         // Posicion X de cada línea (separación entre ellas)
         CGFloat positionX = _showAxis ? ((widthLine * (i - 1)) + (widthLine / 2) + marginAxis) : ((widthLine * (i - 1)) + (widthLine / 2));
         
         
         UIColor *barColor = [self getBarColorWithIndex:i];
-        
-        
 //        barColor=[UIColor clearColor];
         
         // CAShapeLayer for bar
@@ -489,7 +499,12 @@ CGFloat const constantMarginAxis = 20.0;
         // Setup animation Label from orientation
         CABasicAnimation *animationLabel = [self setupAnimationLabelWithProgress:progress];
         
+        
         _vertical ? [[progressText layer] addAnimation:animationLabel forKey:@"y"] : [[progressText layer] addAnimation:animationLabel forKey:@"x"];
+        
+        if (minusProgres==YES) {
+            _showProgress=YES;
+        }
         
     }
 }
