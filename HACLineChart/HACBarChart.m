@@ -25,6 +25,7 @@ CGFloat const constantMarginAxis = 20.0;
     _sizeLabelProgress          = 40;   // Width of label progress text
     _customText                 = NO;   // Show custom text, in _data with key kHACCustomText
     _barMargin                  = 0;    // Margin between bars
+    _animationDuration          = 1;
     _progressTextColor          = [UIColor blackColor];
     _axisYTextColor             = [UIColor lightGrayColor];
     _progressTextFont           = [UIFont fontWithName:@"DINCondensed-Bold" size:12.0];
@@ -156,7 +157,7 @@ CGFloat const constantMarginAxis = 20.0;
 -(CABasicAnimation *)getAnimationWithKey:(NSString *)key{
     // Animation for bar chart
     CABasicAnimation *pathAnimation = [CABasicAnimation animationWithKeyPath:key];
-    pathAnimation.duration = 1;
+    pathAnimation.duration = _animationDuration;
     pathAnimation.fromValue = [NSNumber numberWithFloat:0.0f];
     pathAnimation.toValue = [NSNumber numberWithFloat:1.0f];
     
@@ -210,7 +211,7 @@ CGFloat const constantMarginAxis = 20.0;
 -(CABasicAnimation *)setupAnimationLabelWithProgress:(CGFloat)progress{
     CABasicAnimation *animationLabel;
     animationLabel            = [CABasicAnimation animationWithKeyPath: _vertical ? (@"position.y") : (@"position.x")];
-    animationLabel.duration   = 1;
+    animationLabel.duration   = _animationDuration;
     
     if (_vertical) {
         if (_reverse) {
@@ -353,22 +354,25 @@ CGFloat const constantMarginAxis = 20.0;
             
             CAShapeLayer *shapeLayer = [CAShapeLayer layer];
             shapeLayer.path = [path CGPath];
-            shapeLayer.strokeColor = [[UIColor redColor] CGColor];
+            shapeLayer.strokeColor = [[UIColor blackColor] CGColor];
             shapeLayer.lineWidth = 1.0;
             shapeLayer.fillColor = [[UIColor clearColor] CGColor];
             
             [self.layer addSublayer:shapeLayer];
             if (i != 0 && i!= divider-1) {
-                [self drawDashedLineWithPositionY:(((CGRectGetHeight(self.bounds)-marginAxis)/(divider-1))) * i];
+                [self drawDashedLineWithPositionX:((((CGRectGetWidth(self.bounds)-marginAxis)/(divider-1))) * i)+marginAxis];
             }
             // Label for axis number
             NSString *text;
             
-            _reverse ? (text = [NSString stringWithFormat:@"%.0f", fabs(ceil(_maxValue / (divider-1))) * i]) : (text = [NSString stringWithFormat:@"%.0f", fabs(ceil(_maxValue / (divider-1))) * j]);
+            !_reverse ? (text = [NSString stringWithFormat:@"%.0f", fabs(ceil(_maxValue / (divider-1))) * i]) : (text = [NSString stringWithFormat:@"%.0f", fabs(ceil(_maxValue / (divider-1))) * j]);
             
             CGRect frame;
             
-            i==(divider-1) ? (frame = CGRectMake(0, CGRectGetHeight(self.bounds)-marginAxis - 15/2, marginAxis - 3, 15)) : (frame = CGRectMake(0, ((CGRectGetHeight(self.bounds)-marginAxis)/(divider-1) * i) - 15 / 2, marginAxis - 3, 15)) ;
+            i==(divider-1) ?
+            (frame =  CGRectMake(((((CGRectGetWidth(self.bounds)-marginAxis)/(divider-1))) * i)+marginAxis/4, CGRectGetHeight(self.bounds) - (marginAxis-1 )+5, marginAxis - 3, 15))
+            :
+            (frame = CGRectMake(((((CGRectGetWidth(self.bounds)-marginAxis)/(divider-1))) * i)+marginAxis/2, CGRectGetHeight(self.bounds) - (marginAxis-1 )+5, marginAxis - 3, 15));
             
             UILabel *lbl           = [[UILabel alloc]initWithFrame:frame];
             lbl.text               = text;
@@ -386,6 +390,25 @@ CGFloat const constantMarginAxis = 20.0;
     }
 }
 
+-(void)drawDashedLineWithPositionX:(CGFloat)positionX{
+    CAShapeLayer *shapeLayer = [CAShapeLayer layer];
+    [shapeLayer setFillColor:[[UIColor clearColor] CGColor]];
+    [shapeLayer setStrokeColor:[[UIColor colorWithRed:0.26 green:0.26 blue:0.26 alpha:.5] CGColor]];
+    [shapeLayer setLineWidth:1.0f];
+    shapeLayer.zPosition = 1.0f;
+    [shapeLayer setLineJoin:kCALineJoinRound];
+    [shapeLayer setLineDashPattern: [NSArray arrayWithObjects:[NSNumber numberWithInt:3], [NSNumber numberWithInt:3],nil]];
+    
+    // Setup the path
+    CGMutablePathRef path = CGPathCreateMutable();
+    CGPathMoveToPoint(path, NULL, positionX, CGRectGetHeight(self.bounds) - marginAxis);
+    CGPathAddLineToPoint(path, NULL, positionX, 0);
+    
+    [shapeLayer setPath:path];
+    CGPathRelease(path);
+    
+    [[self layer] addSublayer:shapeLayer];
+}
 -(void)drawDashedLineWithPositionY:(CGFloat)positionY{
     CAShapeLayer *shapeLayer = [CAShapeLayer layer];
     [shapeLayer setFillColor:[[UIColor clearColor] CGColor]];
@@ -447,7 +470,6 @@ CGFloat const constantMarginAxis = 20.0;
         
         _showProgress ? (progress -= _sizeLabelProgress) : progress;
         
-        
         BOOL minusProgres=NO;
         
         if (progress<0 && _showProgress==YES) {
@@ -458,7 +480,6 @@ CGFloat const constantMarginAxis = 20.0;
         
         // Posicion X de cada línea (separación entre ellas)
         CGFloat positionX = _showAxis ? ((widthLine * (i - 1)) + (widthLine / 2) + marginAxis) : ((widthLine * (i - 1)) + (widthLine / 2));
-        
         
         UIColor *barColor = [self getBarColorWithIndex:i];
 //        barColor=[UIColor clearColor];
@@ -495,7 +516,7 @@ CGFloat const constantMarginAxis = 20.0;
         CABasicAnimation *animationLabel = [self setupAnimationLabelWithProgress:progress];
         
         
-        _vertical ? [[progressText layer] addAnimation:animationLabel forKey:@"y"] : [[progressText layer] addAnimation:animationLabel forKey:@"x"];
+       _vertical ? [[progressText layer] addAnimation:animationLabel forKey:@"y"] : [[progressText layer] addAnimation:animationLabel forKey:@"x"];
         
         if (minusProgres==YES) {
             _showProgress=YES;

@@ -25,6 +25,7 @@
 @property (nonatomic) int sizeLabelProgress;
 @property (nonatomic) int maxValue;
 @property (nonatomic) int barMargin;
+@property (nonatomic) int animationDuration;
 
 @property (strong, nonatomic) UIColor *progressTextColor;
 @property (strong, nonatomic) UIColor *axisYTextColor;

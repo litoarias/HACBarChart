@@ -22,6 +22,7 @@
 - (IBAction)tapReverse:(id)sender;
 - (IBAction)tapVertical:(id)sender;
 - (IBAction)showAxis:(id)sender;
+- (IBAction)showCustomText:(id)sender;
 
 @end
 
