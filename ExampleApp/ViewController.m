@@ -51,7 +51,7 @@
 //    _chart.axisMaxValue             = 1500;    // If no define maxValue, get maxium of _data
     _chart.progressTextColor        = [UIColor darkGrayColor];
     _chart.axisYTextColor           = [UIColor grayColor];
-    _chart.backgroundColor          = [UIColor lightGrayColor];
+//    _chart.backgroundColor          = [UIColor lightGrayColor];
     _chart.progressTextFont         = [UIFont fontWithName:@"DINCondensed-Bold" size:8];
     _chart.data = data;
     
