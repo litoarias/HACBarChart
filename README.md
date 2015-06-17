@@ -1,4 +1,4 @@
-# HACBarChart
+# [![Logo](https://github.com/litoarias/HACBarChart/blob/master/logo.png)](#)
 Simple and dynamic bar graph, very easy setup and operation.
 
 ![Preview](https://github.com/litoarias/HACBarChart/blob/master/Screencast.gif)
