@@ -1,7 +1,7 @@
 # [![Logo](https://github.com/litoarias/HACBarChart/blob/master/logo.png)](#)
 Simple and dynamic bar graph, very easy setup and operation.
 
-![Preview](https://github.com/litoarias/HACBarChart/blob/master/Screencast.gif)
+![Preview](https://github.com/litoarias/HACBarChart/blob/master/hacbarchart.gif)
 
 ##Requirements and Dependencies
 - iOS >= 6.0
