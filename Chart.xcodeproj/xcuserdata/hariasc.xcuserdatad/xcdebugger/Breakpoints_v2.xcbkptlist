@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "HACLineChart/HACBarChart.m"
-            timestampString = "455931548.974861"
+            timestampString = "456212931.235584"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "239"
-            endingLineNumber = "239"
+            startingLineNumber = "207"
+            endingLineNumber = "207"
             landmarkName = "-setupAnimationLabelWithProgress:"
             landmarkType = "5">
          </BreakpointContent>

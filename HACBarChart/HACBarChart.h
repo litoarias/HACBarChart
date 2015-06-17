@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "HACBarLayer.h"
 
 #define kHACPercentage      @"percentage"
 #define kHACColor           @"color"
@@ -17,15 +18,16 @@
 
 @property (nonatomic) BOOL vertical;
 @property (nonatomic) BOOL reverse;
-@property (nonatomic) BOOL showProgress;
-@property (nonatomic) BOOL showRealValue;
-@property (nonatomic) BOOL customText;
+@property (nonatomic) BOOL showProgressLabel;
+@property (nonatomic) BOOL showDataValue;
+@property (nonatomic) BOOL showCustomText;
 @property (nonatomic) BOOL showAxis;
 
 @property (nonatomic) int sizeLabelProgress;
-@property (nonatomic) int maxValue;
-@property (nonatomic) int barMargin;
+@property (nonatomic) int axisMaxValue;
+@property (nonatomic) int barsMargin;
 @property (nonatomic) int animationDuration;
+@property (nonatomic) int numberDividersAxisY;
 
 @property (strong, nonatomic) UIColor *progressTextColor;
 @property (strong, nonatomic) UIColor *axisYTextColor;

@@ -38,19 +38,20 @@
     
     
     ////// CHART CONFIG
-    _chart.showAxis                   = YES;   // Show axis line
-    _chart.showProgress               = YES;   // Show text for bar
-    _chart.vertical                   = YES;   // Orientation chart
-    _chart.reverse                    = YES;   // Orientation chart
-    _chart.showRealValue              = YES;   // Show value contains _data, or real percent value
-    _chart.customText                 = YES;   // Show custom text, in _data with key kHACCustomText
-    _chart.barMargin                  = 0;     // Margin between bars
-    _chart.sizeLabelProgress          = 25;    // Width of label progress text
-    _chart.animationDuration          = 1;
-    //    _chart.maxValue                 = 1200;    // If no define maxValue, get maxium of _data
+    _chart.showAxis                 = YES;   // Show axis line
+    _chart.showProgressLabel        = YES;   // Show text for bar
+    _chart.vertical                 = YES;   // Orientation chart
+    _chart.reverse                  = YES;   // Orientation chart
+    _chart.showDataValue            = YES;   // Show value contains _data, or real percent value
+    _chart.showCustomText           = YES;   // Show custom text, in _data with key kHACCustomText
+    _chart.barsMargin               = 0;     // Margin between bars
+    _chart.sizeLabelProgress        = 25;    // Width of label progress text
+    _chart.animationDuration        = 1;
+    _chart.numberDividersAxisY      = 8;
+//    _chart.axisMaxValue             = 1500;    // If no define maxValue, get maxium of _data
     _chart.progressTextColor        = [UIColor darkGrayColor];
     _chart.axisYTextColor           = [UIColor grayColor];
-    _chart.backgroundColor          = [UIColor clearColor];
+    _chart.backgroundColor          = [UIColor lightGrayColor];
     _chart.progressTextFont         = [UIFont fontWithName:@"DINCondensed-Bold" size:8];
     _chart.data = data;
     
@@ -70,7 +71,7 @@
 
 - (IBAction)slideAction:(id)sender {
     UISlider *slide = (UISlider *)sender;
-    _chart.barMargin = slide.value;
+    _chart.barsMargin = slide.value;
     _lblSlide.text = [NSString stringWithFormat:@"Bar margin= %.0f",fabsf(slide.value)];
     if ([timer isValid]) {
         [timer invalidate];
@@ -98,9 +99,9 @@
 - (IBAction)tapRealValue:(id)sender {
     UISwitch *mySwitch = (UISwitch *)sender;
     if ([mySwitch isOn]) {
-        _chart.showRealValue = YES;
+        _chart.showDataValue = YES;
     } else {
-        _chart.showRealValue = NO;
+        _chart.showDataValue = NO;
     }
     [self tapSetData:nil];
 }
@@ -108,9 +109,9 @@
 - (IBAction)tapShowProgress:(id)sender {
     UISwitch *mySwitch = (UISwitch *)sender;
     if ([mySwitch isOn]) {
-        _chart.showProgress = YES;
+        _chart.showProgressLabel = YES;
     } else {
-        _chart.showProgress = NO;
+        _chart.showProgressLabel = NO;
     }
     [self tapSetData:nil];
 }
@@ -148,9 +149,9 @@
 - (IBAction)showCustomText:(id)sender {
     UISwitch *mySwitch = (UISwitch *)sender;
     if ([mySwitch isOn]) {
-        _chart.customText = YES;
+        _chart.showCustomText = YES;
     } else {
-        _chart.customText = NO;
+        _chart.showCustomText = NO;
     }
     [self tapSetData:nil];
 }
