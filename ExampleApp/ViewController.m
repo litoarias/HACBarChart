@@ -46,12 +46,10 @@
     _chart.showCustomText           = YES;   // Show custom text, in _data with key kHACCustomText
     _chart.barsMargin               = 0;     // Margin between bars
     _chart.sizeLabelProgress        = 25;    // Width of label progress text
-    _chart.animationDuration        = 1;
     _chart.numberDividersAxisY      = 8;
 //    _chart.axisMaxValue             = 1500;    // If no define maxValue, get maxium of _data
     _chart.progressTextColor        = [UIColor darkGrayColor];
     _chart.axisYTextColor           = [UIColor grayColor];
-//    _chart.backgroundColor          = [UIColor lightGrayColor];
     _chart.progressTextFont         = [UIFont fontWithName:@"DINCondensed-Bold" size:8];
     _chart.data = data;
     

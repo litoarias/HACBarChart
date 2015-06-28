@@ -51,6 +51,7 @@ CGFloat const constantMarginAxis = 20.0;
 # pragma mark - Public Methods
 
 -(void)draw{
+    self.userInteractionEnabled=NO;
     [self createChart];
 }
 

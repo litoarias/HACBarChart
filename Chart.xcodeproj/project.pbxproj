@@ -150,10 +150,10 @@
 		E3E0ECD31B1DC1DF006F9724 /* HACBarChart */ = {
 			isa = PBXGroup;
 			children = (
+				E3DDD1241B3144C000E18D52 /* HACBarChart.h */,
 				E3DDD1211B3144C000E18D52 /* HACBarChart.m */,
 				E3DDD1221B3144C000E18D52 /* HACBarLayer.h */,
 				E3DDD1231B3144C000E18D52 /* HACBarLayer.m */,
-				E3DDD1241B3144C000E18D52 /* HACBarChart.h */,
 			);
 			name = HACBarChart;
 			path = HACLineChart;
