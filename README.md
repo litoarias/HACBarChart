@@ -1,4 +1,10 @@
 # [![Logo](https://github.com/litoarias/HACBarChart/blob/master/logo.png)](#)
+<img src="https://img.shields.io/twitter/url/https/github.com/litoarias/HACBarChart.svg?style=social"><br>
+<img src="https://img.shields.io/github/issues/litoarias/HACBarChart.svg?style=flat-square">
+<img src="https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square">
+<img src="https://img.shields.io/cocoapods/v/HACBarChart.svg?style=flat-square">
+<img src="https://img.shields.io/npm/dm/HACBarChart.svg?style=flat-square">
+
 Simple and dynamic bar graph, very easy setup and operation.
 
 ![Preview](https://github.com/litoarias/HACBarChart/blob/master/hacbarchart.gif)
