@@ -68,7 +68,7 @@ CGFloat const constantMarginAxis = 20.0;
     return [[[consulados lastObject]valueForKey:kHACPercentage] floatValue];
 }
 -(int)getMaxValue{
-    return _axisMaxValue ? abs(_axisMaxValue) : abs((_axisMaxValue = [self calculateMaxValue]));
+    return abs((_axisMaxValue = [self calculateMaxValue])+1);
 }
 
 -(CGFloat)getWitdOfLine{
@@ -261,6 +261,10 @@ CGFloat const constantMarginAxis = 20.0;
     int j;
     int divider = _numberDividersAxisY;
     
+    if(divider > _axisMaxValue){
+        divider = [self getMaxValue] +1;
+    }
+    
     for (i = 0, j = (divider-1); i < divider; i++, j--) {
         
         if (_vertical) {
@@ -283,7 +287,15 @@ CGFloat const constantMarginAxis = 20.0;
             // Label for axis number
             NSString *text;
             
-            _reverse ? (text = [NSString stringWithFormat:@"%.0f", fabs(ceil(_axisMaxValue / (divider-1))) * i]) : (text = [NSString stringWithFormat:@"%.0f", fabs(ceil(_axisMaxValue / (divider-1))) * j]);
+            if (_reverse) {
+                text = [NSString stringWithFormat:@"%.1f", (divider > _axisMaxValue) ? (float)(( divider / _axisMaxValue))*i : (float)((_axisMaxValue / divider))*i];
+            }else{
+                if(divider > _axisMaxValue){
+                    text = [NSString stringWithFormat:@"%.1f",(float)(( divider / [self getMaxValue]))*j];
+                }else{
+                    text = [NSString stringWithFormat:@"%.1f",(float)((_axisMaxValue / divider))*j];
+                }
+            }
             
             CGRect frame;
             
@@ -293,10 +305,10 @@ CGFloat const constantMarginAxis = 20.0;
             
             
             if (divider-1==i && _reverse) {
-                lbl.text = [NSString stringWithFormat:@"%d",[self getMaxValue]];
+                lbl.text = [NSString stringWithFormat:@"%.1f",(float)[self getMaxValue]];
             }
             else if (0==i && !_reverse){
-                lbl.text = [NSString stringWithFormat:@"%d",[self getMaxValue]];
+                lbl.text = [NSString stringWithFormat:@"%.1f",(float)[self getMaxValue]];
             }
             else{
                 lbl.text = text;
@@ -333,7 +345,17 @@ CGFloat const constantMarginAxis = 20.0;
             // Label for axis number
             NSString *text;
             
-            !_reverse ? (text = [NSString stringWithFormat:@"%.0f", fabs(ceil(_axisMaxValue / (divider-1))) * i]) : (text = [NSString stringWithFormat:@"%.0f", fabs(ceil(_axisMaxValue / (divider-1))) * j]);
+            if (_reverse) {
+                text = [NSString stringWithFormat:@"%.1f", (divider > _axisMaxValue) ? (float)(( divider / _axisMaxValue))*i : (float)((_axisMaxValue / divider))*i];
+            }else{
+                if(divider > _axisMaxValue){
+                    text = [NSString stringWithFormat:@"%.1f",(float)(( divider / [self getMaxValue]))*j];
+                }else{
+                    text = [NSString stringWithFormat:@"%.1f",(float)((_axisMaxValue / divider))*j];
+                }
+            }
+            //
+            //            !_reverse ? (text = [NSString stringWithFormat:@"%.0f", fabs(ceil(_axisMaxValue / (divider-1))) * i]) : (text = [NSString stringWithFormat:@"%.0f", fabs(ceil(_axisMaxValue / (divider-1))) * j]);
             
             CGRect frame;
             
