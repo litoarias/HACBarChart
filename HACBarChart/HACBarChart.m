@@ -30,6 +30,8 @@ CGFloat const constantMarginAxis = 20.0;
     _progressTextColor          = [UIColor blackColor];
     _axisYTextColor             = [UIColor lightGrayColor];
     _progressTextFont           = [UIFont fontWithName:@"DINCondensed-Bold" size:12.0];
+    _alignmentText              = NSTextAlignmentLeft;
+    _typeBar                    = HACBarType4;
 }
 
 - (id)initWithFrame:(CGRect)frame
@@ -160,19 +162,66 @@ CGFloat const constantMarginAxis = 20.0;
     return text;
 }
 
--(UILabel *) setLabelWithFrame:(CGRect)frame text:(NSString*)text barColor:(UIColor *)barColor{
+-(UILabel *) setLabelWithFrame:(CGRect)frame text:(NSString*)text barColor:(UIColor *)barColor progress:(CGFloat)progess{
     UILabel *progressText           = [[UILabel alloc]initWithFrame:frame];
     progressText.text               = text;
     progressText.font               = _progressTextFont;
-    progressText.backgroundColor    = [barColor colorWithAlphaComponent:.3];
     _vertical ? (progressText.textAlignment = NSTextAlignmentCenter) : (progressText.textAlignment = NSTextAlignmentCenter);
     progressText.textColor          = _progressTextColor;
     progressText.numberOfLines      = 1;
-    progressText.layer.borderWidth  = 1;
-    progressText.layer.borderColor  = barColor.CGColor;
-    [progressText setMinimumScaleFactor:5.0/[UIFont labelFontSize]];
-    progressText.adjustsFontSizeToFitWidth = YES;
-    progressText.layer.masksToBounds = YES;
+    
+    switch ((int)_typeBar) {
+        case HACBarType1:
+            
+            // Bordered & background
+            progressText.backgroundColor    = [barColor colorWithAlphaComponent:.3];
+            progressText.layer.borderWidth  = 1;
+            progressText.layer.borderColor  = barColor.CGColor;
+            break;
+        case HACBarType2:
+            
+            [progressText setMinimumScaleFactor:5.0/[UIFont labelFontSize]];
+            progressText.adjustsFontSizeToFitWidth = YES;
+            progressText.layer.masksToBounds = YES;
+            
+            break;
+        case HACBarType3:
+        {
+            // Only top border
+            CALayer* layer = [progressText layer];
+            
+            CALayer *bottomBorder = [CALayer layer];
+            bottomBorder.borderColor = [UIColor darkGrayColor].CGColor;
+            bottomBorder.borderWidth = 1;
+            if (_reverse) {
+                bottomBorder.frame = CGRectMake(0, layer.frame.size.height-1, layer.frame.size.width, 1);
+                [bottomBorder setBorderColor:barColor.CGColor];
+                [layer addSublayer:bottomBorder];
+            }else{
+                bottomBorder.frame = CGRectMake(0, 0, layer.frame.size.width, 1);
+                [bottomBorder setBorderColor:barColor.CGColor];
+                [layer addSublayer:bottomBorder];
+            }
+            if (_sizeLabelProgress >= progess) {
+                
+                bottomBorder.borderColor = [UIColor clearColor].CGColor;
+                bottomBorder.borderWidth = 0;
+            }
+        }
+            break;
+            
+        case HACBarType4:{
+            
+            // Bordered & background
+            progressText.backgroundColor    = [barColor colorWithAlphaComponent:0];
+            progressText.layer.borderWidth  = 1;
+            progressText.layer.borderColor  = barColor.CGColor;
+        }
+            break;
+            
+        default:
+            break;
+    }
     
     return progressText;
 }
@@ -468,7 +517,23 @@ CGFloat const constantMarginAxis = 20.0;
         // Get real Progress
         int realPercent = (progress*100)/progress100;
         
-        _showProgressLabel ? (progress -= _sizeLabelProgress) : progress;
+        
+        // Resto el tamaño del label, en caso de que se muestre
+        switch (_typeBar) {
+            case HACBarType1:
+            case HACBarType3:
+            case HACBarType4:
+                _showProgressLabel ? (progress -= _sizeLabelProgress) : progress;
+                
+                break;
+                
+            case HACBarType2:
+                
+                break;
+            default:
+                break;
+        }
+        
         
         BOOL minusProgres=NO;
         
@@ -503,10 +568,19 @@ CGFloat const constantMarginAxis = 20.0;
         // CreaTe Laber progress
         UILabel *progressText = [self setLabelWithFrame:[self getFrameLabelWith:widthLine index:i progress:progress]
                                                    text:[self getTextWithIndex:i realPercent:realPercent value:value]
-                                               barColor:barColor];
+                                               barColor:barColor
+                                               progress:progress];
+        
+        
+        if (_sizeLabelProgress >= progress) {
+            progressText.layer.borderWidth = 0.0;
+            progressText.backgroundColor = [UIColor clearColor];
+        }
         
         // Show progress ?
-        _showProgressLabel ? [self addSubview:progressText] : _showProgressLabel;
+        //        _showProgressLabel ? [self addSubview:progressText] : _showProgressLabel;
+        
+        [self addSubview:progressText];
         
         // Setup animation Label from orientation
         CABasicAnimation *animationLabel = [self setupAnimationLabelWithProgress:progress];

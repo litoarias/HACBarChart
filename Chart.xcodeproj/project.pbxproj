@@ -15,7 +15,6 @@
 		E312494C1B1F9539003691C4 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = E31249481B1F9539003691C4 /* LaunchScreen.xib */; };
 		E312494D1B1F9539003691C4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E312494A1B1F9539003691C4 /* Main.storyboard */; };
 		E312494F1B1F954C003691C4 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E312494E1B1F954C003691C4 /* Images.xcassets */; };
-		E31249511B1F957E003691C4 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E31249501B1F957E003691C4 /* Info.plist */; };
 		E3DDD1251B3144C000E18D52 /* HACBarChart.m in Sources */ = {isa = PBXBuildFile; fileRef = E3DDD1211B3144C000E18D52 /* HACBarChart.m */; };
 		E3DDD1261B3144C000E18D52 /* HACBarLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = E3DDD1231B3144C000E18D52 /* HACBarLayer.m */; };
 		E3DDD15A1B317B6400E18D52 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = E3DDD1591B317B6400E18D52 /* logo.png */; };
@@ -203,7 +202,7 @@
 		E310CF241B1C5AF800784DAC /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0630;
+				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = "Hipolito Arias";
 				TargetAttributes = {
 					E310CF2B1B1C5AF800784DAC = {
@@ -244,7 +243,6 @@
 				E312494F1B1F954C003691C4 /* Images.xcassets in Resources */,
 				E312494D1B1F9539003691C4 /* Main.storyboard in Resources */,
 				E3DDD15A1B317B6400E18D52 /* logo.png in Resources */,
-				E31249511B1F957E003691C4 /* Info.plist in Resources */,
 				E3DDD15C1B317DD300E18D52 /* hacbarchart.gif in Resources */,
 				E3E0ECFF1B1DF3FD006F9724 /* Default-568h@2x.png in Resources */,
 			);
@@ -331,6 +329,7 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -397,6 +396,7 @@
 				INFOPLIST_FILE = ExampleApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "es.masterapps.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = Chart;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -409,6 +409,7 @@
 				INFOPLIST_FILE = ExampleApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "es.masterapps.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = Chart;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -428,6 +429,7 @@
 				);
 				INFOPLIST_FILE = ChartTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "es.masterapps.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = ChartTests;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Chart.app/Chart";
 			};
@@ -443,6 +445,7 @@
 				);
 				INFOPLIST_FILE = ChartTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "es.masterapps.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = ChartTests;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Chart.app/Chart";
 			};

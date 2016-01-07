@@ -13,8 +13,18 @@
 #define kHACColor           @"color"
 #define kHACCustomText      @"customText"
 
+enum {
+    HACBarType1,
+    HACBarType2,
+    HACBarType3,
+    HACBarType4
+};
+typedef int HACBarType;
+
 
 @interface HACBarChart : UIView
+
+@property (nonatomic) HACBarType typeBar;
 
 @property (nonatomic) BOOL vertical;
 @property (nonatomic) BOOL reverse;
@@ -28,6 +38,8 @@
 @property (nonatomic) int barsMargin;
 @property (nonatomic) int animationDuration;
 @property (nonatomic) int numberDividersAxisY;
+
+@property (nonatomic) NSTextAlignment alignmentText;
 
 @property (strong, nonatomic) UIColor *progressTextColor;
 @property (strong, nonatomic) UIColor *axisYTextColor;
