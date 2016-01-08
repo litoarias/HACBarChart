@@ -9,6 +9,16 @@ Simple and dynamic bar graph, very easy setup and operation.
 
 ![Preview](https://github.com/litoarias/HACBarChart/blob/master/hacbarchart.gif)
 
+![Preview](https://github.com/litoarias/HACBarChart/blob/master/Simulator%20Screen%20Shot%207%20ene%202016%2020.10.38.png)
+![Preview](https://github.com/litoarias/HACBarChart/blob/master/Simulator%20Screen%20Shot%208%20ene%202016%2011.19.07.png)
+![Preview](https://github.com/litoarias/HACBarChart/blob/master/Simulator%20Screen%20Shot%208%20ene%202016%2011.19.09.png)
+![Preview](https://github.com/litoarias/HACBarChart/blob/master/Simulator%20Screen%20Shot%208%20ene%202016%2011.19.12.png)
+![Preview](https://github.com/litoarias/HACBarChart/blob/master/Simulator%20Screen%20Shot%208%20ene%202016%2011.19.18.png)
+![Preview](https://github.com/litoarias/HACBarChart/blob/master/Simulator%20Screen%20Shot%208%20ene%202016%2011.20.02.png)
+![Preview](https://github.com/litoarias/HACBarChart/blob/master/Simulator%20Screen%20Shot%208%20ene%202016%2011.20.57.png)
+![Preview](https://github.com/litoarias/HACBarChart/blob/master/Simulator%20Screen%20Shot%208%20ene%202016%2011.21.05.png)
+![Preview](https://github.com/litoarias/HACBarChart/blob/master/Simulator%20Screen%20Shot%208%20ene%202016%2011.21.15.png)
+
 ##Requirements and Dependencies
 - iOS >= 6.0
 - ARC enabled
