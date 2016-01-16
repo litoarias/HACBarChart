@@ -1,4 +1,4 @@
-# [![Logo](https://github.com/litoarias/HACBarChart/tree/master/ExampleApp/Images.xcassets/master/logo.png)](#)
+# [![Logo](https://github.com/litoarias/HACBarChart/blob/master/ExampleApp/Images.xcassets/logo.png)](#)
 <img src="https://img.shields.io/twitter/url/https/github.com/litoarias/HACBarChart.svg?style=social"><br>
 <img src="https://img.shields.io/github/issues/litoarias/HACBarChart.svg?style=flat-square">
 <img src="https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square">
