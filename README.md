@@ -9,6 +9,15 @@ Simple and dynamic bar graph, very easy setup and operation.
 
 ![Preview](https://github.com/litoarias/HACBarChart/blob/master/hacbarchart.gif)
 
+![Preview](https://github.com/litoarias/HACBarChart/blob/master/Simulator%20Screen%20Shot%208%20ene%202016%2011.19.07.png)
+![Preview](https://github.com/litoarias/HACBarChart/blob/master/Simulator%20Screen%20Shot%208%20ene%202016%2011.19.09.png)
+![Preview](https://github.com/litoarias/HACBarChart/blob/master/Simulator%20Screen%20Shot%208%20ene%202016%2011.19.12.png)
+![Preview](https://github.com/litoarias/HACBarChart/blob/master/Simulator%20Screen%20Shot%208%20ene%202016%2011.19.18.png)
+![Preview](https://github.com/litoarias/HACBarChart/blob/master/Simulator%20Screen%20Shot%208%20ene%202016%2011.20.02.png)
+![Preview](https://github.com/litoarias/HACBarChart/blob/master/Simulator%20Screen%20Shot%208%20ene%202016%2011.20.57.png)
+![Preview](https://github.com/litoarias/HACBarChart/blob/master/Simulator%20Screen%20Shot%208%20ene%202016%2011.21.15.png)
+![Preview](https://github.com/litoarias/HACBarChart/blob/master/Simulator%20Screen%20Shot%208%20ene%202016%2011.21.05.png)
+
 ##Requirements and Dependencies
 - iOS >= 6.0
 - ARC enabled
@@ -82,17 +91,27 @@ For draw the chart, after assign the data is necessary doing in the method `view
     _chart.showAxis                 = YES;   // Show axis line
     _chart.showProgressLabel        = YES;   // Show text for bar
     _chart.vertical                 = YES;   // Orientation chart
-    _chart.reverse                  = YES;   // Orientation chart
+    _chart.reverse                  = NO;   // Orientation chart
     _chart.showDataValue            = YES;   // Show value contains _data, or real percent value
     _chart.showCustomText           = YES;   // Show custom text, in _data with key kHACCustomText
     _chart.barsMargin               = 0;     // Margin between bars
-    _chart.sizeLabelProgress        = 25;    // Width of label progress text
+    _chart.sizeLabelProgress        = 30;    // Width of label progress text
     _chart.numberDividersAxisY      = 8;
+    _chart.animationDuration        = 2;
 //    _chart.axisMaxValue             = 1500;    // If no define maxValue, get maxium of _data
     _chart.progressTextColor        = [UIColor darkGrayColor];
-    _chart.axisYTextColor           = [UIColor grayColor];
-    _chart.progressTextFont         = [UIFont fontWithName:@"DINCondensed-Bold" size:8];
-
+    _chart.axisYTextColor           = [UIColor colorWithRed:0.80 green:0.80 blue:0.80 alpha:1.0];
+    _chart.progressTextFont         = [UIFont fontWithName:@"DINCondensed-Bold" size:6];
+    _chart.typeBar                  = HACBarType2;
+    _chart.dashedLineColor            = [UIColor colorWithRed:0.44 green:0.66 blue:0.86 alpha:.3];
+    _chart.axisXColor                 = [UIColor colorWithRed:0.44 green:0.66 blue:0.86 alpha:1.0];
+    _chart.axisYColor                 = [UIColor colorWithRed:0.44 green:0.66 blue:0.86 alpha:1.0];
+    _chart.data = data;
+    
+    ////// CHART SET DATA
+    [_chart draw];
+    
+    
 ```
 
 Enjoy :D

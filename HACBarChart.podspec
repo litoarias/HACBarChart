@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "HACBarChart"
-  s.version      = "0.0.4"
+  s.version      = "0.0.5"
   s.summary      = "Easy bar chart"
   s.description  = <<-DESC
 	Simple and dynamic bar graph, very easy setup and operation.
@@ -10,7 +10,7 @@ Pod::Spec.new do |s|
   s.authors          = { "litoarias" => "lito.arias.cervero@gmail.com" }
   s.social_media_url = 'https://github.com/litoarias/HACBarChart'
   s.platform         = :ios, "7.0"
-  s.source           = { :git => "https://github.com/litoarias/HACBarChart.git", :tag => "0.0.4" }
+  s.source           = { :git => "https://github.com/litoarias/HACBarChart.git", :tag => "0.0.5" }
   s.source_files     = "HACBarChart"
   s.requires_arc     = true
 
