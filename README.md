@@ -14,8 +14,8 @@ Simple and dynamic bar graph, very easy setup and operation.
 ![Preview](https://github.com/litoarias/HACBarChart/blob/master/ExampleApp/Images.xcassets/Simulator%20Screen%20Shot%208%20ene%202016%2011.19.18.imageset/Simulator%20Screen%20Shot%208%20ene%202016%2011.19.18.png)
 ![Preview](https://github.com/litoarias/HACBarChart/blob/master/ExampleApp/Images.xcassets/Simulator%20Screen%20Shot%208%20ene%202016%2011.20.02.imageset/Simulator%20Screen%20Shot%208%20ene%202016%2011.20.02.png)
 ![Preview](https://github.com/litoarias/HACBarChart/blob/master/ExampleApp/Images.xcassets/Simulator%20Screen%20Shot%208%20ene%202016%2011.20.57.imageset/Simulator%20Screen%20Shot%208%20ene%202016%2011.20.57.png)
-![Preview](https://github.com/litoarias/HACBarChart/blob/master/ExampleApp/Images.xcassets/Simulator%20Screen%20Shot%208%20ene%202016%2011.21.05.imageset/Simulator%20Screen%20Shot%208%20ene%202016%2011.21.05.png)
 ![Preview](https://github.com/litoarias/HACBarChart/blob/master/ExampleApp/Images.xcassets/Simulator%20Screen%20Shot%208%20ene%202016%2011.21.15.imageset/Simulator%20Screen%20Shot%208%20ene%202016%2011.21.15.png)
+![Preview](https://github.com/litoarias/HACBarChart/blob/master/ExampleApp/Images.xcassets/Simulator%20Screen%20Shot%208%20ene%202016%2011.21.05.imageset/Simulator%20Screen%20Shot%208%20ene%202016%2011.21.05.png)
 
 ##Requirements and Dependencies
 - iOS >= 6.0
