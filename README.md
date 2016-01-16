@@ -1,4 +1,4 @@
-# [![Logo](https://github.com/litoarias/HACBarChart/tree/master/ExampleApp/Images.xcassets/logo.png)](#)
+# [![Logo](https://github.com/litoarias/HACBarChart/blob/master/ExampleApp/Images.xcassets/logo.imageset/logo.png)](#)
 <img src="https://img.shields.io/twitter/url/https/github.com/litoarias/HACBarChart.svg?style=social"><br>
 <img src="https://img.shields.io/github/issues/litoarias/HACBarChart.svg?style=flat-square">
 <img src="https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square">
@@ -6,16 +6,16 @@
 
 Simple and dynamic bar graph, very easy setup and operation.
 
-![Preview](https://github.com/litoarias/HACBarChart/tree/master/ExampleApp/Images.xcassets/hacbarchart.gif)
+![Preview](https://github.com/litoarias/HACBarChart/blob/master/ExampleApp/Images.xcassets/Screencast.dataset/Screencast.gif)
 
-![Preview](https://github.com/litoarias/HACBarChart/tree/master/ExampleApp/Images.xcassets/Simulator%20Screen%20Shot%208%20ene%202016%2011.19.07.png)
-![Preview](https://github.com/litoarias/HACBarChart/tree/master/ExampleApp/Images.xcassets/Simulator%20Screen%20Shot%208%20ene%202016%2011.19.09.png)
-![Preview](https://github.com/litoarias/HACBarChart/tree/master/ExampleApp/Images.xcassets/Simulator%20Screen%20Shot%208%20ene%202016%2011.19.12.png)
-![Preview](https://github.com/litoarias/HACBarChart/tree/master/ExampleApp/Images.xcassets/Simulator%20Screen%20Shot%208%20ene%202016%2011.19.18.png)
-![Preview](https://github.com/litoarias/HACBarChart/tree/master/ExampleApp/Images.xcassets/Simulator%20Screen%20Shot%208%20ene%202016%2011.20.02.png)
-![Preview](https://github.com/litoarias/HACBarChart/tree/master/ExampleApp/Images.xcassets/Simulator%20Screen%20Shot%208%20ene%202016%2011.20.57.png)
-![Preview](https://github.com/litoarias/HACBarChart/tree/master/ExampleApp/Images.xcassets/Simulator%20Screen%20Shot%208%20ene%202016%2011.21.15.png)
-![Preview](https://github.com/litoarias/HACBarChart/tree/master/ExampleApp/Images.xcassets/Simulator%20Screen%20Shot%208%20ene%202016%2011.21.05.png)
+![Preview](https://github.com/litoarias/HACBarChart/blob/master/ExampleApp/Images.xcassets/Simulator%20Screen%20Shot%208%20ene%202016%2011.19.07.imageset/Simulator%20Screen%20Shot%208%20ene%202016%2011.19.07.png)
+![Preview](https://github.com/litoarias/HACBarChart/blob/master/ExampleApp/Images.xcassets/Simulator%20Screen%20Shot%208%20ene%202016%2011.19.09.imageset/Simulator%20Screen%20Shot%208%20ene%202016%2011.19.09.png)
+![Preview](https://github.com/litoarias/HACBarChart/blob/master/ExampleApp/Images.xcassets/Simulator%20Screen%20Shot%208%20ene%202016%2011.19.12.imageset/Simulator%20Screen%20Shot%208%20ene%202016%2011.19.12.png)
+![Preview](https://github.com/litoarias/HACBarChart/blob/master/ExampleApp/Images.xcassets/Simulator%20Screen%20Shot%208%20ene%202016%2011.19.18.imageset/Simulator%20Screen%20Shot%208%20ene%202016%2011.19.18.png)
+![Preview](https://github.com/litoarias/HACBarChart/blob/master/ExampleApp/Images.xcassets/Simulator%20Screen%20Shot%208%20ene%202016%2011.20.02.imageset/Simulator%20Screen%20Shot%208%20ene%202016%2011.20.02.png)
+![Preview](https://github.com/litoarias/HACBarChart/blob/master/ExampleApp/Images.xcassets/Simulator%20Screen%20Shot%208%20ene%202016%2011.20.57.imageset/Simulator%20Screen%20Shot%208%20ene%202016%2011.20.57.png)
+![Preview](https://github.com/litoarias/HACBarChart/blob/master/ExampleApp/Images.xcassets/Simulator%20Screen%20Shot%208%20ene%202016%2011.21.05.imageset/Simulator%20Screen%20Shot%208%20ene%202016%2011.21.05.png)
+![Preview](https://github.com/litoarias/HACBarChart/blob/master/ExampleApp/Images.xcassets/Simulator%20Screen%20Shot%208%20ene%202016%2011.21.15.imageset/Simulator%20Screen%20Shot%208%20ene%202016%2011.21.15.png)
 
 ##Requirements and Dependencies
 - iOS >= 6.0
