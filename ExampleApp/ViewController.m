@@ -27,20 +27,20 @@
     
     switch (segControl.selectedSegmentIndex) {
         case 0:
-            _chart.typeBar = HACBarType1;
+            _chart3.typeBar = HACBarType1;
             break;
         case 1:
-            _chart.typeBar = HACBarType2;
+            _chart3.typeBar = HACBarType2;
             break;
         case 2:
-            _chart.typeBar = HACBarType3;
+            _chart3.typeBar = HACBarType3;
             break;
         case 3:
-            _chart.typeBar = HACBarType4;
+            _chart3.typeBar = HACBarType4;
             break;
             
         default:
-            _chart.typeBar = HACBarType1;
+            _chart3.typeBar = HACBarType1;
             break;
     }
     
@@ -150,7 +150,7 @@
     _chart3.progressTextColor        = [UIColor darkGrayColor];
     _chart3.axisYTextColor           = [UIColor colorWithRed:0.80 green:0.80 blue:0.80 alpha:1.0];
     _chart3.progressTextFont         = [UIFont fontWithName:@"DINCondensed-Bold" size:6];
-    _chart3.typeBar                  = HACBarType2;
+    _chart3.typeBar                  = HACBarType1;
     _chart3.dashedLineColor          = [UIColor colorWithRed:0.44 green:0.66 blue:0.86 alpha:.3];
     _chart3.axisXColor               = [UIColor colorWithRed:0.44 green:0.66 blue:0.86 alpha:1.0];
     _chart3.axisYColor               = [UIColor colorWithRed:0.44 green:0.66 blue:0.86 alpha:1.0];
@@ -172,7 +172,7 @@
 
 - (IBAction)slideAction:(id)sender {
     UISlider *slide = (UISlider *)sender;
-    _chart.barsMargin = slide.value;
+    _chart3.barsMargin = slide.value;
     _lblSlide.text = [NSString stringWithFormat:@"Bar margin= %.0f",fabsf(slide.value)];
     if ([timer isValid]) {
         [timer invalidate];
@@ -186,7 +186,7 @@
 }
 
 - (IBAction)tapClear:(id)sender {
-    [_chart clearChart];
+    [_chart3 clearChart];
 }
 
 - (IBAction)tapSetData:(id)sender {
@@ -194,15 +194,15 @@
     [self tapClear:nil];
     
     ////// CHART SET DATA
-    [_chart draw];
+    [_chart3 draw];
 }
 
 - (IBAction)tapRealValue:(id)sender {
     UISwitch *mySwitch = (UISwitch *)sender;
     if ([mySwitch isOn]) {
-        _chart.showDataValue = YES;
+        _chart3.showDataValue = YES;
     } else {
-        _chart.showDataValue = NO;
+        _chart3.showDataValue = NO;
     }
     [self tapSetData:nil];
 }
@@ -210,9 +210,9 @@
 - (IBAction)tapShowProgress:(id)sender {
     UISwitch *mySwitch = (UISwitch *)sender;
     if ([mySwitch isOn]) {
-        _chart.showProgressLabel = YES;
+        _chart3.showProgressLabel = YES;
     } else {
-        _chart.showProgressLabel = NO;
+        _chart3.showProgressLabel = NO;
     }
     [self tapSetData:nil];
 }
@@ -220,9 +220,9 @@
 - (IBAction)tapReverse:(id)sender {
     UISwitch *mySwitch = (UISwitch *)sender;
     if ([mySwitch isOn]) {
-        _chart.reverse = YES;
+        _chart3.reverse = YES;
     } else {
-        _chart.reverse = NO;
+        _chart3.reverse = NO;
     }
     [self tapSetData:nil];
 }
@@ -230,9 +230,9 @@
 - (IBAction)tapVertical:(id)sender {
     UISwitch *mySwitch = (UISwitch *)sender;
     if ([mySwitch isOn]) {
-        _chart.vertical = YES;
+        _chart3.vertical = YES;
     } else {
-        _chart.vertical = NO;
+        _chart3.vertical = NO;
     }
     [self tapSetData:nil];
 }
@@ -240,9 +240,9 @@
 - (IBAction)showAxis:(id)sender {
     UISwitch *mySwitch = (UISwitch *)sender;
     if ([mySwitch isOn]) {
-        _chart.showAxis = YES;
+        _chart3.showAxis = YES;
     } else {
-        _chart.showAxis = NO;
+        _chart3.showAxis = NO;
     }
     [self tapSetData:nil];
 }
@@ -250,9 +250,9 @@
 - (IBAction)showCustomText:(id)sender {
     UISwitch *mySwitch = (UISwitch *)sender;
     if ([mySwitch isOn]) {
-        _chart.showCustomText = YES;
+        _chart3.showCustomText = YES;
     } else {
-        _chart.showCustomText = NO;
+        _chart3.showCustomText = NO;
     }
     [self tapSetData:nil];
 }
