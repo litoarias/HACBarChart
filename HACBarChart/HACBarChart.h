@@ -38,11 +38,15 @@ typedef int HACBarType;
 @property (nonatomic) int barsMargin;
 @property (nonatomic) int animationDuration;
 @property (nonatomic) int numberDividersAxisY;
-
+@property (nonatomic) CGFloat mAxis;
 @property (nonatomic) NSTextAlignment alignmentText;
 
 @property (strong, nonatomic) UIColor *progressTextColor;
 @property (strong, nonatomic) UIColor *axisYTextColor;
+@property (strong, nonatomic) UIColor *dashedLineColor;
+@property (strong, nonatomic) UIColor *axisXColor;
+@property (strong, nonatomic) UIColor *axisYColor;
+
 @property (strong, nonatomic) UIFont *progressTextFont;
 
 @property (strong, nonatomic) NSArray *data;

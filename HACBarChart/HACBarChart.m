@@ -32,6 +32,9 @@ CGFloat const constantMarginAxis = 20.0;
     _progressTextFont           = [UIFont fontWithName:@"DINCondensed-Bold" size:12.0];
     _alignmentText              = NSTextAlignmentLeft;
     _typeBar                    = HACBarType4;
+    _dashedLineColor            = [UIColor blackColor];
+    _axisXColor                 = [UIColor blackColor];
+    _axisYColor                 = [UIColor blackColor];
 }
 
 - (id)initWithFrame:(CGRect)frame
@@ -50,11 +53,18 @@ CGFloat const constantMarginAxis = 20.0;
     return self;
 }
 
+- (void)layoutSubviews {
+    [super layoutSubviews];
+    
+    self.userInteractionEnabled=NO;
+    [self createChart];
+    
+}
+
 # pragma mark - Public Methods
 
 -(void)draw{
-    self.userInteractionEnabled=NO;
-    [self createChart];
+    NSLog(@"entraaaa");
 }
 
 
@@ -105,19 +115,19 @@ CGFloat const constantMarginAxis = 20.0;
     if (_vertical) {
         if (_reverse) {
             ////// VERTICAL TOP TO BOTTOM
-            [pathBar moveToPoint:CGPointMake(positionX,0.0)];
-            [pathBar addLineToPoint:CGPointMake(positionX, progress)];
+            [pathBar moveToPoint:CGPointMake(positionX,1.0)];
+            [pathBar addLineToPoint:CGPointMake(positionX, progress+1.0)];
         }else{
             ////// VERTICAL BOTTOM TO TOP
-            [pathBar moveToPoint:CGPointMake(positionX,CGRectGetHeight(self.bounds) - marginAxis)];
-            [pathBar addLineToPoint:CGPointMake(positionX, CGRectGetHeight(self.bounds) - (progress + marginAxis))];
+            [pathBar moveToPoint:CGPointMake(positionX,(CGRectGetHeight(self.bounds) - marginAxis)-1)];
+            [pathBar addLineToPoint:CGPointMake(positionX, (CGRectGetHeight(self.bounds) - (progress + marginAxis))-1)];
         }
     }else{
         if (_reverse) {
             ////// VERTICAL RIGTH TO LEFT
             if (_showAxis) {
-                [pathBar moveToPoint:CGPointMake(CGRectGetWidth(self.bounds), positionX - marginAxis)];
-                [pathBar addLineToPoint:CGPointMake(CGRectGetWidth(self.bounds) - progress, positionX - marginAxis)];
+                [pathBar moveToPoint:CGPointMake(CGRectGetWidth(self.bounds)-1, positionX - marginAxis)];
+                [pathBar addLineToPoint:CGPointMake(CGRectGetWidth(self.bounds)-1 - progress, positionX - marginAxis)];
             }else{
                 [pathBar moveToPoint:CGPointMake(CGRectGetWidth(self.bounds), positionX - marginAxis)];
                 [pathBar addLineToPoint:CGPointMake(CGRectGetWidth(self.bounds) - progress, positionX + marginAxis)];
@@ -125,8 +135,8 @@ CGFloat const constantMarginAxis = 20.0;
         }else{
             ////// HORIZONTAL LEFT TO RIGHT
             if (_showAxis) {
-                [pathBar moveToPoint:CGPointMake(marginAxis, positionX - marginAxis)];
-                [pathBar addLineToPoint:CGPointMake(progress + marginAxis, positionX - marginAxis)];
+                [pathBar moveToPoint:CGPointMake(marginAxis+1, positionX - marginAxis)];
+                [pathBar addLineToPoint:CGPointMake(progress + marginAxis + 1, positionX - marginAxis)];
             }else{
                 [pathBar moveToPoint:CGPointMake(marginAxis, positionX - marginAxis)];
                 [pathBar addLineToPoint:CGPointMake(progress + marginAxis, positionX - marginAxis)];
@@ -277,12 +287,46 @@ CGFloat const constantMarginAxis = 20.0;
 -(void)setupHorizontalAxisX{
     
     UIBezierPath *path = [UIBezierPath bezierPath];
-    [path moveToPoint:CGPointMake(marginAxis/*-1*/, CGRectGetHeight(self.bounds) - marginAxis /*+ 1*/)];
-    [path addLineToPoint:CGPointMake(CGRectGetWidth(self.bounds), CGRectGetHeight(self.bounds) - marginAxis /*+1*/)];
+    
+    
+    
+    
+    if (_vertical) {
+        if (_reverse) {
+            ////// VERTICAL TOP TO BOTTOM
+            [path moveToPoint:CGPointMake(marginAxis/*-1*/, 0 /*+ 1*/)];
+            [path addLineToPoint:CGPointMake(CGRectGetWidth(self.bounds), 0 /*+1*/)];
+        }else{
+            ////// VERTICAL BOTTOM TO TOP
+            [path moveToPoint:CGPointMake(marginAxis/*-1*/, CGRectGetHeight(self.bounds) - marginAxis /*+ 1*/)];
+            [path addLineToPoint:CGPointMake(CGRectGetWidth(self.bounds), CGRectGetHeight(self.bounds) - marginAxis /*+1*/)];
+        }
+    }else{
+        if (_reverse) {
+            ////// VERTICAL RIGTH TO LEFT
+            if (_showAxis) {
+                [path moveToPoint:CGPointMake(marginAxis/*-1*/, CGRectGetHeight(self.bounds) - marginAxis /*+ 1*/)];
+                [path addLineToPoint:CGPointMake(CGRectGetWidth(self.bounds), CGRectGetHeight(self.bounds) - marginAxis /*+1*/)];
+            }else{
+                [path moveToPoint:CGPointMake(marginAxis/*-1*/, CGRectGetHeight(self.bounds) - marginAxis /*+ 1*/)];
+                [path addLineToPoint:CGPointMake(CGRectGetWidth(self.bounds), CGRectGetHeight(self.bounds) - marginAxis /*+1*/)];
+            }
+        }else{
+            ////// HORIZONTAL LEFT TO RIGHT
+            if (_showAxis) {
+                [path moveToPoint:CGPointMake(marginAxis/*-1*/, CGRectGetHeight(self.bounds) - marginAxis /*+ 1*/)];
+                [path addLineToPoint:CGPointMake(CGRectGetWidth(self.bounds), CGRectGetHeight(self.bounds) - marginAxis /*+1*/)];
+            }else{
+                [path moveToPoint:CGPointMake(marginAxis/*-1*/, CGRectGetHeight(self.bounds) - marginAxis /*+ 1*/)];
+                [path addLineToPoint:CGPointMake(CGRectGetWidth(self.bounds), CGRectGetHeight(self.bounds) - marginAxis /*+1*/)];
+            }
+        }
+    }
+
     
     CAShapeLayer *shapeLayer = [CAShapeLayer layer];
     shapeLayer.path = [path CGPath];
-    shapeLayer.strokeColor = [[UIColor blackColor] CGColor];
+    shapeLayer.strokeColor = [_axisXColor CGColor];
     shapeLayer.lineWidth = 1.0;
     shapeLayer.fillColor = [[UIColor clearColor] CGColor];
     
@@ -292,12 +336,48 @@ CGFloat const constantMarginAxis = 20.0;
 -(void)setupVerticalAxisY{
     
     UIBezierPath *path = [UIBezierPath bezierPath];
-    [path moveToPoint:CGPointMake(marginAxis /*- 1*/, 0.0)];
-    [path addLineToPoint:CGPointMake(marginAxis /*- 1*/, CGRectGetHeight(self.bounds) - marginAxis /*+ 1*/)];
+    
+    
+    
+    if (_vertical) {
+        if (_reverse) {
+            ////// VERTICAL TOP TO BOTTOM
+            [path moveToPoint:CGPointMake(marginAxis /*- 1*/, 0.0)];
+            [path addLineToPoint:CGPointMake(marginAxis /*- 1*/, CGRectGetHeight(self.bounds) - marginAxis /*+ 1*/)];
+        }else{
+            ////// VERTICAL BOTTOM TO TOP
+            [path moveToPoint:CGPointMake(marginAxis /*- 1*/, 0.0)];
+            [path addLineToPoint:CGPointMake(marginAxis /*- 1*/, CGRectGetHeight(self.bounds) - marginAxis /*+ 1*/)];
+        }
+    }else{
+        if (_reverse) {
+            ////// VERTICAL RIGTH TO LEFT
+            if (_showAxis) {
+                
+                [path moveToPoint:CGPointMake(CGRectGetWidth(self.bounds) /*- 1*/, 0.0)];
+                [path addLineToPoint:CGPointMake(CGRectGetWidth(self.bounds)
+                                                 /*- 1*/, CGRectGetHeight(self.bounds) - marginAxis /*+ 1*/)];
+            }else{
+                
+                [path moveToPoint:CGPointMake(marginAxis /*- 1*/, 0.0)];
+                [path addLineToPoint:CGPointMake(marginAxis /*- 1*/, CGRectGetHeight(self.bounds) - marginAxis /*+ 1*/)];
+            }
+        }else{
+            ////// HORIZONTAL LEFT TO RIGHT
+            if (_showAxis) {
+                [path moveToPoint:CGPointMake(marginAxis /*- 1*/, 0.0)];
+                [path addLineToPoint:CGPointMake(marginAxis /*- 1*/, CGRectGetHeight(self.bounds) - marginAxis /*+ 1*/)];
+            }else{
+                
+                [path moveToPoint:CGPointMake(marginAxis /*- 1*/, 0.0)];
+                [path addLineToPoint:CGPointMake(marginAxis /*- 1*/, CGRectGetHeight(self.bounds) - marginAxis /*+ 1*/)];
+            }
+        }
+    }
     
     CAShapeLayer *shapeLayer = [CAShapeLayer layer];
     shapeLayer.path = [path CGPath];
-    shapeLayer.strokeColor = [[UIColor blackColor] CGColor];
+    shapeLayer.strokeColor = [_axisYColor CGColor];
     shapeLayer.lineWidth = 1.0;
     shapeLayer.fillColor = [[UIColor clearColor] CGColor];
     
@@ -325,7 +405,7 @@ CGFloat const constantMarginAxis = 20.0;
             
             CAShapeLayer *shapeLayer = [CAShapeLayer layer];
             shapeLayer.path = [path CGPath];
-            shapeLayer.strokeColor = [[UIColor blackColor] CGColor];
+            shapeLayer.strokeColor = [_axisYColor CGColor];
             shapeLayer.lineWidth = 1.0;
             shapeLayer.fillColor = [[UIColor clearColor] CGColor];
             
@@ -383,7 +463,7 @@ CGFloat const constantMarginAxis = 20.0;
             
             CAShapeLayer *shapeLayer = [CAShapeLayer layer];
             shapeLayer.path = [path CGPath];
-            shapeLayer.strokeColor = [[UIColor blackColor] CGColor];
+            shapeLayer.strokeColor = [_axisYColor CGColor];
             shapeLayer.lineWidth = 1.0;
             shapeLayer.fillColor = [[UIColor clearColor] CGColor];
             
@@ -395,12 +475,12 @@ CGFloat const constantMarginAxis = 20.0;
             NSString *text;
             
             if (_reverse) {
-                text = [NSString stringWithFormat:@"%.1f", (divider > _axisMaxValue) ? (float)(( divider / _axisMaxValue))*i : (float)((_axisMaxValue / divider))*i];
+                text = [NSString stringWithFormat:@"%.1f", (divider > _axisMaxValue) ? (float)(( divider / _axisMaxValue))*j : (float)((_axisMaxValue / divider))*j];
             }else{
                 if(divider > _axisMaxValue){
                     text = [NSString stringWithFormat:@"%.1f",(float)(( divider / [self getMaxValue]))*j];
                 }else{
-                    text = [NSString stringWithFormat:@"%.1f",(float)((_axisMaxValue / divider))*j];
+                    text = [NSString stringWithFormat:@"%.1f",(float)((_axisMaxValue / divider))*i];
                 }
             }
             //
@@ -442,7 +522,7 @@ CGFloat const constantMarginAxis = 20.0;
 -(void)drawDashedLineWithPositionX:(CGFloat)positionX{
     CAShapeLayer *shapeLayer = [CAShapeLayer layer];
     [shapeLayer setFillColor:[[UIColor clearColor] CGColor]];
-    [shapeLayer setStrokeColor:[[UIColor colorWithRed:0.26 green:0.26 blue:0.26 alpha:.5] CGColor]];
+    [shapeLayer setStrokeColor:[_dashedLineColor CGColor]];
     [shapeLayer setLineWidth:1.0f];
     shapeLayer.zPosition = 1.0f;
     [shapeLayer setLineJoin:kCALineJoinRound];
@@ -461,7 +541,7 @@ CGFloat const constantMarginAxis = 20.0;
 -(void)drawDashedLineWithPositionY:(CGFloat)positionY{
     CAShapeLayer *shapeLayer = [CAShapeLayer layer];
     [shapeLayer setFillColor:[[UIColor clearColor] CGColor]];
-    [shapeLayer setStrokeColor:[[UIColor colorWithRed:0.26 green:0.26 blue:0.26 alpha:.5] CGColor]];
+    [shapeLayer setStrokeColor:[_dashedLineColor CGColor]];
     [shapeLayer setLineWidth:1.0f];
     shapeLayer.zPosition = 1.0f;
     [shapeLayer setLineJoin:kCALineJoinRound];
@@ -545,6 +625,8 @@ CGFloat const constantMarginAxis = 20.0;
         
         // Posicion X de cada línea (separación entre ellas)
         CGFloat positionX = _showAxis ? ((widthLine * (i - 1)) + (widthLine / 2) + marginAxis) : ((widthLine * (i - 1)) + (widthLine / 2));
+        positionX += 1;
+        
         
         UIColor*barColor = [self getBarColorWithIndex:i];
         
@@ -578,9 +660,9 @@ CGFloat const constantMarginAxis = 20.0;
         }
         
         // Show progress ?
-        //        _showProgressLabel ? [self addSubview:progressText] : _showProgressLabel;
+        _showProgressLabel ? [self addSubview:progressText] : _showProgressLabel;
         
-        [self addSubview:progressText];
+        //        [self addSubview:progressText];
         
         // Setup animation Label from orientation
         CABasicAnimation *animationLabel = [self setupAnimationLabelWithProgress:progress];

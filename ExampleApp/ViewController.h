@@ -13,6 +13,7 @@
 
 @property (weak, nonatomic) IBOutlet HACBarChart *chart;
 @property (weak, nonatomic) IBOutlet UILabel *lblSlide;
+@property (weak, nonatomic) IBOutlet HACBarChart *chart2;
 
 - (IBAction)slideAction:(id)sender;
 - (IBAction)tapClear:(id)sender;
