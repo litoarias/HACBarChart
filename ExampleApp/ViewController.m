@@ -98,9 +98,9 @@
     _chart.axisYTextColor           = [UIColor colorWithRed:0.80 green:0.80 blue:0.80 alpha:1.0];
     _chart.progressTextFont         = [UIFont fontWithName:@"DINCondensed-Bold" size:6];
     _chart.typeBar                  = HACBarType2;
-    _chart.dashedLineColor            = [UIColor colorWithRed:0.44 green:0.66 blue:0.86 alpha:.3];
-    _chart.axisXColor                 = [UIColor colorWithRed:0.44 green:0.66 blue:0.86 alpha:1.0];
-    _chart.axisYColor                 = [UIColor colorWithRed:0.44 green:0.66 blue:0.86 alpha:1.0];
+    _chart.dashedLineColor          = [UIColor colorWithRed:0.44 green:0.66 blue:0.86 alpha:.3];
+    _chart.axisXColor               = [UIColor colorWithRed:0.44 green:0.66 blue:0.86 alpha:1.0];
+    _chart.axisYColor               = [UIColor colorWithRed:0.44 green:0.66 blue:0.86 alpha:1.0];
     _chart.data = data;
     
     ////// CHART SET DATA
