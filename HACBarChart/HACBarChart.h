@@ -32,6 +32,7 @@ typedef int HACBarType;
 @property (nonatomic) BOOL showDataValue;
 @property (nonatomic) BOOL showCustomText;
 @property (nonatomic) BOOL showAxis;
+@property (nonatomic) BOOL showAxisZeroValue;
 
 @property (nonatomic) int sizeLabelProgress;
 @property (nonatomic) int axisMaxValue;

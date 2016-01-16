@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "HACBarChart/HACBarChart.m"
-            timestampString = "474648268.713161"
+            timestampString = "474651689.335141"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "408"
-            endingLineNumber = "408"
+            startingLineNumber = "409"
+            endingLineNumber = "409"
             landmarkName = "-setupAxisYNumbers"
             landmarkType = "5">
          </BreakpointContent>
@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "HACBarChart/HACBarChart.m"
-            timestampString = "474648291.027784"
+            timestampString = "474651820.676792"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "466"
-            endingLineNumber = "466"
+            startingLineNumber = "499"
+            endingLineNumber = "499"
             landmarkName = "-setupAxisYNumbers"
             landmarkType = "5">
          </BreakpointContent>

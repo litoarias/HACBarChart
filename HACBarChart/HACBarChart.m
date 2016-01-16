@@ -35,6 +35,7 @@ CGFloat const constantMarginAxis = 20.0;
     _dashedLineColor            = [UIColor blackColor];
     _axisXColor                 = [UIColor blackColor];
     _axisYColor                 = [UIColor blackColor];
+    _showAxisZeroValue          = YES;
 }
 
 - (id)initWithFrame:(CGRect)frame
@@ -322,7 +323,7 @@ CGFloat const constantMarginAxis = 20.0;
             }
         }
     }
-
+    
     
     CAShapeLayer *shapeLayer = [CAShapeLayer layer];
     shapeLayer.path = [path CGPath];
@@ -495,15 +496,34 @@ CGFloat const constantMarginAxis = 20.0;
             
             UILabel *lbl           = [[UILabel alloc]initWithFrame:frame];
             
-            if (0==i && _reverse) {
-                lbl.text = [NSString stringWithFormat:@"%d",[self getMaxValue]];
+            if ([text isEqualToString:@"0.0"]) {
+                NSLog(@"----------------------------------> 0.0");
+                if (_showAxisZeroValue) {
+                    if (0==i && _reverse) {
+                        lbl.text = [NSString stringWithFormat:@"%d",[self getMaxValue]];
+                    }
+                    else if (divider-1==i && !_reverse){
+                        lbl.text = [NSString stringWithFormat:@"%d",[self getMaxValue]];
+                    }
+                    else{
+                        lbl.text = text;
+                    }
+                }
+            }else{
+                //                NSLog(@"----------------------------------> 0.0");
+                if (0==i && _reverse) {
+                    lbl.text = [NSString stringWithFormat:@"%d",[self getMaxValue]];
+                }
+                else if (divider-1==i && !_reverse){
+                    lbl.text = [NSString stringWithFormat:@"%d",[self getMaxValue]];
+                }
+                else{
+                    lbl.text = text;
+                }
+                
             }
-            else if (divider-1==i && !_reverse){
-                lbl.text = [NSString stringWithFormat:@"%d",[self getMaxValue]];
-            }
-            else{
-                lbl.text = text;
-            }
+            
+            
             
             lbl.font               = _progressTextFont;
             lbl.backgroundColor    = [UIColor clearColor];
