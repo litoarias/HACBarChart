@@ -152,14 +152,14 @@ CGFloat const constantMarginAxis = 20.0;
 -(CGRect)getFrameLabelWith:(CGFloat)witdthBar index:(int)index progress:(CGFloat)progress{
     if (_showAxis) {
         return _vertical ?
-        CGRectMake((witdthBar * index) - witdthBar + marginAxis, progress, witdthBar, _sizeLabelProgress)
+        CGRectMake(((witdthBar * index) - witdthBar + marginAxis)+1, progress, witdthBar, _sizeLabelProgress)
         :
-        CGRectMake(marginAxis, (witdthBar * index) - witdthBar, _sizeLabelProgress, witdthBar);
+        CGRectMake(marginAxis, ((witdthBar * index) - witdthBar)+1, _sizeLabelProgress, witdthBar);
     }else{
         return _vertical ?
-        CGRectMake((witdthBar * index) - witdthBar, progress, witdthBar, _sizeLabelProgress)
+        CGRectMake(((witdthBar * index) - witdthBar)+1, progress, witdthBar, _sizeLabelProgress)
         :
-        CGRectMake(0.0, (witdthBar * index) - witdthBar, _sizeLabelProgress, witdthBar);
+        CGRectMake(0.0, ((witdthBar * index) - witdthBar)+1, _sizeLabelProgress, witdthBar);
     }
 }
 
@@ -306,8 +306,8 @@ CGFloat const constantMarginAxis = 20.0;
         if (_reverse) {
             ////// VERTICAL RIGTH TO LEFT
             if (_showAxis) {
-                [path moveToPoint:CGPointMake(marginAxis/*-1*/, CGRectGetHeight(self.bounds) - marginAxis /*+ 1*/)];
-                [path addLineToPoint:CGPointMake(CGRectGetWidth(self.bounds), CGRectGetHeight(self.bounds) - marginAxis /*+1*/)];
+                [path moveToPoint:CGPointMake(marginAxis/*-1*/, CGRectGetHeight(self.bounds) - marginAxis + 2)];
+                [path addLineToPoint:CGPointMake(CGRectGetWidth(self.bounds), CGRectGetHeight(self.bounds) - marginAxis + 2)];
             }else{
                 [path moveToPoint:CGPointMake(marginAxis/*-1*/, CGRectGetHeight(self.bounds) - marginAxis /*+ 1*/)];
                 [path addLineToPoint:CGPointMake(CGRectGetWidth(self.bounds), CGRectGetHeight(self.bounds) - marginAxis /*+1*/)];
@@ -315,8 +315,8 @@ CGFloat const constantMarginAxis = 20.0;
         }else{
             ////// HORIZONTAL LEFT TO RIGHT
             if (_showAxis) {
-                [path moveToPoint:CGPointMake(marginAxis/*-1*/, CGRectGetHeight(self.bounds) - marginAxis /*+ 1*/)];
-                [path addLineToPoint:CGPointMake(CGRectGetWidth(self.bounds), CGRectGetHeight(self.bounds) - marginAxis /*+1*/)];
+                [path moveToPoint:CGPointMake(marginAxis/*-1*/, CGRectGetHeight(self.bounds) - marginAxis + 2)];
+                [path addLineToPoint:CGPointMake(CGRectGetWidth(self.bounds), CGRectGetHeight(self.bounds) - marginAxis + 2)];
             }else{
                 [path moveToPoint:CGPointMake(marginAxis/*-1*/, CGRectGetHeight(self.bounds) - marginAxis /*+ 1*/)];
                 [path addLineToPoint:CGPointMake(CGRectGetWidth(self.bounds), CGRectGetHeight(self.bounds) - marginAxis /*+1*/)];
@@ -423,13 +423,17 @@ CGFloat const constantMarginAxis = 20.0;
                 if(divider > _axisMaxValue){
                     text = [NSString stringWithFormat:@"%.1f",(float)(( divider / [self getMaxValue]))*j];
                 }else{
-                    text = [NSString stringWithFormat:@"%.1f",(float)((_axisMaxValue / divider))*j];
+                    text = [NSString stringWithFormat:@"%.1f",(float)((_axisMaxValue / divider-1))*j];
                 }
             }
             
             CGRect frame;
             
-            i==(divider-1) ? (frame = CGRectMake(0, CGRectGetHeight(self.bounds)-marginAxis - 15/2, marginAxis - 3, 15)) : (frame = CGRectMake(0, ((CGRectGetHeight(self.bounds)-marginAxis)/(divider-1) * i) - 15 / 2, marginAxis - 3, 15)) ;
+            i==(divider-1)
+            ?
+            (frame = CGRectMake(0, CGRectGetHeight(self.bounds)-marginAxis - 15/2, marginAxis - 3, 15))
+            :
+            (frame = CGRectMake(0, ((CGRectGetHeight(self.bounds)-marginAxis)/(divider-1) * i) - 15 / 2, marginAxis - 3, 15));
             
             UILabel *lbl           = [[UILabel alloc]initWithFrame:frame];
             
@@ -481,7 +485,7 @@ CGFloat const constantMarginAxis = 20.0;
                 if(divider > _axisMaxValue){
                     text = [NSString stringWithFormat:@"%.1f",(float)(( divider / [self getMaxValue]))*j];
                 }else{
-                    text = [NSString stringWithFormat:@"%.1f",(float)((_axisMaxValue / divider))*i];
+                    text = [NSString stringWithFormat:@"%.1f",(float)((_axisMaxValue / divider-1))*i];
                 }
             }
             //
