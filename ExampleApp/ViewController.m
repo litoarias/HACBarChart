@@ -65,7 +65,7 @@
              @{kHACPercentage:@500,  kHACColor  : [UIColor colorWithRed:0.282f green:0.631f blue:0.620f alpha:1.0f], kHACCustomText : @"September"},
              @{kHACPercentage:@375,  kHACColor  : [UIColor colorWithRed:0.776f green:0.000f blue:0.702f alpha:1.0f], kHACCustomText : @"October"},
              @{kHACPercentage:@2,  kHACColor  : [UIColor colorWithRed:0.282f green:0.631f blue:0.620f alpha:1.0f], kHACCustomText : @"November"},
-             @{kHACPercentage:@0,  kHACColor  : [UIColor colorWithRed:0.776f green:0.000f blue:0.702f alpha:1.0f], kHACCustomText : @"December"}
+             @{kHACPercentage:@83,  kHACColor  : [UIColor brownColor], kHACCustomText : @"December"}
              ];
 
     
@@ -105,7 +105,7 @@
     _chart.axisXColor               = [UIColor colorWithRed:0.44 green:0.66 blue:0.86 alpha:1.0];
     _chart.axisYColor               = [UIColor colorWithRed:0.44 green:0.66 blue:0.86 alpha:1.0];
     _chart.showAxisZeroValue        = NO;
-    _chart.data = data;
+    _chart.data = data3;
     
     ////// CHART SET DATA
     [_chart draw];
@@ -129,7 +129,7 @@
     _chart2.dashedLineColor          = [UIColor colorWithRed:0.44 green:0.66 blue:0.86 alpha:.3];
     _chart2.axisXColor               = [UIColor colorWithRed:0.44 green:0.66 blue:0.86 alpha:1.0];
     _chart2.axisYColor               = [UIColor colorWithRed:0.44 green:0.66 blue:0.86 alpha:1.0];
-    _chart2.data = data;
+    _chart2.data = data3;
     
     ////// CHART SET DATA
     [_chart2 draw];
@@ -154,7 +154,7 @@
     _chart3.dashedLineColor          = [UIColor colorWithRed:0.44 green:0.66 blue:0.86 alpha:.3];
     _chart3.axisXColor               = [UIColor colorWithRed:0.44 green:0.66 blue:0.86 alpha:1.0];
     _chart3.axisYColor               = [UIColor colorWithRed:0.44 green:0.66 blue:0.86 alpha:1.0];
-    _chart3.data = data;
+    _chart3.data = data3;
     
     ////// CHART SET DATA
     [_chart3 draw];
