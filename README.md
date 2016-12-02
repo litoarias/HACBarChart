@@ -1,5 +1,8 @@
 # [![Logo](https://github.com/litoarias/HACBarChart/blob/master/ExampleApp/Images.xcassets/logo.imageset/logo.png)](#)
+Attention, this project is **without maintenance**
+
 <img src="https://img.shields.io/maintenance/no/2016.svg">
+
 <img src="https://img.shields.io/github/issues/litoarias/HACBarChart.svg?style=flat-square">
 <img src="https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square">
 <img src="https://img.shields.io/cocoapods/v/HACBarChart.svg?style=flat-square">
