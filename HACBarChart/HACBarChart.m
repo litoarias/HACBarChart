@@ -538,12 +538,46 @@ CGFloat const constantMarginAxis = 20.0;
             NSString *text;
             
             if (_reverse) {
-                text = [NSString stringWithFormat:@"%.1f", (divider > _axisMaxValue) ? (float)(( divider / _axisMaxValue))*j : (float)((_axisMaxValue / divider))*j];
+                switch (_axisFormat) {
+                    case HACAxisFormatFloat:
+                        text = [NSString stringWithFormat:@"%.1f", (divider > _axisMaxValue) ? (float)(( divider / _axisMaxValue))*j : (float)((_axisMaxValue / divider))*j];
+                        break;
+                    case HACAxisFormatInt:
+                        text = [NSString stringWithFormat:@"%.1d", (divider > _axisMaxValue) ? (( divider / _axisMaxValue))*j :((_axisMaxValue / divider))*j];
+                        break;
+                        
+                    default:
+                       text = [NSString stringWithFormat:@"%.1f", (divider > _axisMaxValue) ? (float)(( divider / _axisMaxValue))*j : (float)((_axisMaxValue / divider))*j];
+                        break;
+                }
             }else{
                 if(divider > _axisMaxValue){
-                    text = [NSString stringWithFormat:@"%.1f",(float)(( divider / [self getMaxValue]))*j];
+                    switch (_axisFormat) {
+                        case HACAxisFormatFloat:
+                             text = [NSString stringWithFormat:@"%.1f",(float)(( divider / [self getMaxValue]))*j];
+                            break;
+                        case HACAxisFormatInt:
+                             text = [NSString stringWithFormat:@"%.1d",(( divider / [self getMaxValue]))*j];
+                            break;
+                            
+                        default:
+                             text = [NSString stringWithFormat:@"%.1f",(float)(( divider / [self getMaxValue]))*j];
+                            break;
+                    }
+                   
                 }else{
-                    text = [NSString stringWithFormat:@"%.1f",(float)((_axisMaxValue / divider-1))*i];
+                    switch (_axisFormat) {
+                        case HACAxisFormatFloat:
+                           text = [NSString stringWithFormat:@"%.1f",(float)((_axisMaxValue / divider-1))*i];
+                            break;
+                        case HACAxisFormatInt:
+                            text = [NSString stringWithFormat:@"%.1d",((_axisMaxValue / divider-1))*i];
+                            break;
+                            
+                        default:
+                            text = [NSString stringWithFormat:@"%.1f",(float)((_axisMaxValue / divider-1))*i];
+                            break;
+                    }
                 }
             }
             //
