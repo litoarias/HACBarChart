@@ -106,6 +106,7 @@
     _chart.axisYColor               = [UIColor colorWithRed:0.44 green:0.66 blue:0.86 alpha:1.0];
     _chart.showAxisZeroValue        = NO;
     _chart.data = data3;
+    _chart.axisFormat               = HACAxisFormatInt;
     
     ////// CHART SET DATA
     [_chart draw];
@@ -130,6 +131,8 @@
     _chart2.axisXColor               = [UIColor colorWithRed:0.44 green:0.66 blue:0.86 alpha:1.0];
     _chart2.axisYColor               = [UIColor colorWithRed:0.44 green:0.66 blue:0.86 alpha:1.0];
     _chart2.data = data3;
+    _chart2.axisFormat               = HACAxisFormatInt;
+
     
     ////// CHART SET DATA
     [_chart2 draw];
@@ -155,6 +158,8 @@
     _chart3.axisXColor               = [UIColor colorWithRed:0.44 green:0.66 blue:0.86 alpha:1.0];
     _chart3.axisYColor               = [UIColor colorWithRed:0.44 green:0.66 blue:0.86 alpha:1.0];
     _chart3.data = data3;
+    _chart3.axisFormat               = HACAxisFormatInt;
+
     
     ////// CHART SET DATA
     [_chart3 draw];
