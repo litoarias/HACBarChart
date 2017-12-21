@@ -19,7 +19,15 @@ enum {
     HACBarType3,
     HACBarType4
 };
+
+enum {
+    HACAxisFormatInt,
+    HACAxisFormatFloat
+};
+
+
 typedef int HACBarType;
+typedef int HACAxisFormat;
 
 
 @interface HACBarChart : UIView
@@ -33,6 +41,7 @@ typedef int HACBarType;
 @property (nonatomic) BOOL showCustomText;
 @property (nonatomic) BOOL showAxis;
 @property (nonatomic) BOOL showAxisZeroValue;
+@property (nonatomic) HACAxisFormat axisFormat;
 
 @property (nonatomic) int sizeLabelProgress;
 @property (nonatomic) int axisMaxValue;
